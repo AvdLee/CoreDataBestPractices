@@ -22,7 +22,7 @@ final class ArticlesListTableViewController: UICollectionViewController {
             var content = cell.defaultContentConfiguration()
             content.text = article.name
 
-            content.secondaryText = article.tags.compactMap { $0.name }.joined(separator: ", ")
+            content.secondaryText = article.category?.name ?? "Uncategorized"
             content.secondaryTextProperties.color = .secondaryLabel
             content.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .subheadline)
 
@@ -63,7 +63,7 @@ final class ArticlesListTableViewController: UICollectionViewController {
     }
 
     private func setupBarButtonItems() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Tags", primaryAction: UIAction(handler: { _ in
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", primaryAction: UIAction(handler: { _ in
             self.presentTagsView()
         }))
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: UIAction(handler: { _ in
@@ -75,15 +75,15 @@ final class ArticlesListTableViewController: UICollectionViewController {
     private func presentTagsView() {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let tagsView = TagsView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
-        let hostingController = UIHostingController(rootView: tagsView)
+        let categoriesView = CategoriesView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+        let hostingController = UIHostingController(rootView: categoriesView)
         present(hostingController, animated: true, completion: nil)
     }
 
     private func presentAddArticleView() {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let articleView = ArticleFormView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+        let articleView = ArticleFormView(dismiss: { self.dismiss(animated: true) }).environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: articleView)
         present(hostingController, animated: true, completion: nil)
     }

@@ -8,58 +8,67 @@
 import SwiftUI
 
 struct ArticleFormView: View {
+
+    let dismiss: () -> Void
+
     @Environment(\.managedObjectContext) var managedObjectContext
-    
-    @State var username: String = ""
-    @State var isPrivate: Bool = true
-    @State var notificationsEnabled: Bool = false
+    @FetchRequest(entity: Category.entity(), sortDescriptors: []) var categories: FetchedResults<Category>
+
+    @State var name: String = ""
     @State private var previewIndex = 0
-    var previewOptions = ["Always", "When Unlocked", "Never"]
+    @State private var showingAlert = false
+    @State private var errorDescription: String = ""
 
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("PROFILE")) {
-                    TextField("Username", text: $username)
-                    Toggle(isOn: $isPrivate) {
-                        Text("Private Account")
-                    }
-                }
+                Section {
+                    TextField("Name", text: $name)
 
-                Section(header: Text("NOTIFICATIONS")) {
-                    Toggle(isOn: $notificationsEnabled) {
-                        Text("Enabled")
-                    }
-                    Picker(selection: $previewIndex, label: Text("Show Previews")) {
-                        ForEach(0 ..< previewOptions.count) {
-                            Text(self.previewOptions[$0])
+                    Picker("Category", selection: $previewIndex) {
+                        ForEach(0 ..< categories.count) {
+                            Text(categories[$0].name)
                         }
-                    }
-                }
-
-                Section(header: Text("ABOUT")) {
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        Text("2.2.1")
                     }
                 }
 
                 Section {
                     Button(action: {
-                        print("Perform an action here...")
+                        addNewArticle()
                     }) {
-                        Text("Reset All Settings")
+                        Text("Add")
                     }
                 }
             }
-            .navigationBarTitle("Settings")
+            .navigationBarTitle("Add Article")
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("Saving failed"),
+                    message: Text(errorDescription)
+                )
+            }
+        }
+    }
+
+    func addNewArticle() {
+        let article = Article(context: PersistentContainer.shared.viewContext)
+        article.name = name
+        article.category = categories[previewIndex]
+
+        do {
+            try PersistentContainer.shared.viewContext.saveIfNeeded()
+            dismiss()
+        } catch {
+            PersistentContainer.shared.viewContext.delete(article)
+            let localizedDescription = (error as? LocalizedError)?.recoverySuggestion ?? error.localizedDescription
+            self.errorDescription =  localizedDescription
+            showingAlert = true
         }
     }
 }
 
 struct ArticleFormView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleFormView()
+        ArticleFormView(dismiss: { })
     }
 }

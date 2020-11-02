@@ -10,11 +10,24 @@ import CoreData
 
 final class Article: NSManagedObject, Identifiable {
 
-    @NSManaged var name: String?
+    enum Error: Swift.Error, LocalizedError {
+        case protectedName(name: String)
+
+        var recoverySuggestion: String? {
+            switch self {
+            case .protectedName(let name):
+                return "The name '\(name)' is protected and can't be used."
+            }
+        }
+    }
+
+    static let protectedNames: [String] = ["swiftlee", "antoine", "nsspain"]
+
+    @NSManaged var name: String
     @NSManaged var creationDate: Date!
     @NSManaged var lastModifiedDate: Date!
     @NSManaged var localResource: URL?
-    @NSManaged var tags: Set<Tag>
+    @NSManaged var category: Category?
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
@@ -39,6 +52,14 @@ final class Article: NSManagedObject, Identifiable {
     override func prepareForDeletion() {
         super.prepareForDeletion()
         NetworkProvider.shared.cancelAllRequests(for: self)
+    }
+
+    override func validateForInsert() throws {
+        try super.validateForInsert()
+        
+        guard !Self.protectedNames.contains(name.lowercased()) else {
+            throw Error.protectedName(name: name)
+        }
     }
 }
 

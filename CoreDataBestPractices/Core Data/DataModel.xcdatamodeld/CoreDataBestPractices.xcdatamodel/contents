@@ -4,13 +4,13 @@
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastModifiedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="localResource" optional="YES" attributeType="URI"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
-        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="articles" inverseEntity="Tag"/>
+        <attribute name="name" attributeType="String" minValueString="3" maxValueString="32"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="articles" inverseEntity="Category"/>
     </entity>
-    <entity name="Tag" representedClassName=".Tag" syncable="YES">
+    <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="articlesCount" optional="YES" attributeType="Integer 64" derived="YES" derivationExpression="articles.@count" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="articles" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="tags" inverseEntity="Article"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="articles" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="category" inverseEntity="Article"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -19,6 +19,6 @@
     </entity>
     <elements>
         <element name="Article" positionX="-54" positionY="-9" width="128" height="118"/>
-        <element name="Tag" positionX="-45" positionY="36" width="128" height="88"/>
+        <element name="Category" positionX="-45" positionY="36" width="128" height="88"/>
     </elements>
 </model>

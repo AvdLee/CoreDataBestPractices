@@ -1,5 +1,5 @@
 //
-//  TagsView.swift
+//  CategoriesView.swift
 //  CoreDataBestPractices
 //
 //  Created by Antoine van der Lee on 20/10/2020.
@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct TagsView: View {
+struct CategoriesView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(entity: Tag.entity(), sortDescriptors: []) var tags: FetchedResults<Tag>
+    @FetchRequest(entity: Category.entity(), sortDescriptors: []) var categories: FetchedResults<Category>
 
     var body: some View {
         NavigationView {
             VStack {
-                List(tags, id: \.self) { tag in
+                List(categories, id: \.self) { category in
                     VStack(alignment: .leading) {
-                        Text(tag.name ?? "Ghost")
-                        Text("Number of articles: \(tag.articlesCount)")
+                        Text(category.name)
+                        Text("Number of articles: \(category.articlesCount)")
                             .font(.footnote)
                     }
                 }
             }
-            .navigationBarTitle("Tags")
+            .navigationBarTitle("Categories")
             .navigationBarItems(leading:
                 Button("Add") {
-                    let user = Tag(context: managedObjectContext)
+                    let user = Category(context: managedObjectContext)
                     user.name = "SwiftUI"
             }, trailing:
                 Button("Save") {
@@ -38,6 +38,6 @@ struct TagsView: View {
 
 struct TagsView_Previews: PreviewProvider {
     static var previews: some View {
-        TagsView()
+        CategoriesView()
     }
 }

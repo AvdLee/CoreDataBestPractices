@@ -12,13 +12,13 @@
 		506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D30255088B300A82629 /* ArticlesListViewModel.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
-		506FFA1E253EB0C7006835F7 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* TagsView.swift */; };
+		506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* CategoriesView.swift */; };
 		506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */; };
 		506FFA23253EB0C8006835F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA22253EB0C8006835F7 /* Assets.xcassets */; };
 		506FFA26253EB0C8006835F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA25253EB0C8006835F7 /* Preview Assets.xcassets */; };
 		506FFA29253EB0C8006835F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */; };
 		506FFA33253EB0F4006835F7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA32253EB0F4006835F7 /* Article.swift */; };
-		50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2D5AF25474ABC00BAA59C /* Tag.swift */; };
+		50C2D5B025474ABC00BAA59C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2D5AF25474ABC00BAA59C /* Category.swift */; };
 		50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7CFB2255093A300E75FDA /* ArticleFormView.swift */; };
 		50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,14 +30,14 @@
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		506FFA1D253EB0C7006835F7 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		506FFA1D253EB0C7006835F7 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		506FFA20253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataBestPractices.xcdatamodel; sourceTree = "<group>"; };
 		506FFA22253EB0C8006835F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506FFA25253EB0C8006835F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		506FFA28253EB0C8006835F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		506FFA2A253EB0C8006835F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506FFA32253EB0F4006835F7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		50C2D5AF25474ABC00BAA59C /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		50C2D5AF25474ABC00BAA59C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		50D7CFB2255093A300E75FDA /* ArticleFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFormView.swift; sourceTree = "<group>"; };
 		50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,17 +122,17 @@
 			isa = PBXGroup;
 			children = (
 				506FFA32253EB0F4006835F7 /* Article.swift */,
-				50C2D5AF25474ABC00BAA59C /* Tag.swift */,
+				50C2D5AF25474ABC00BAA59C /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		50D7CFB02550937A00E75FDA /* Tags List */ = {
+		50D7CFB02550937A00E75FDA /* Category List */ = {
 			isa = PBXGroup;
 			children = (
-				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
+				506FFA1D253EB0C7006835F7 /* CategoriesView.swift */,
 			);
-			path = "Tags List";
+			path = "Category List";
 			sourceTree = "<group>";
 		};
 		50D7CFB12550938A00E75FDA /* Create Article */ = {
@@ -148,7 +148,7 @@
 			children = (
 				506B5D2F255088A500A82629 /* Articles List */,
 				50D7CFB12550938A00E75FDA /* Create Article */,
-				50D7CFB02550937A00E75FDA /* Tags List */,
+				50D7CFB02550937A00E75FDA /* Category List */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,10 +256,10 @@
 				506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */,
 				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
-				50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */,
+				50C2D5B025474ABC00BAA59C /* Category.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
 				506FFA33253EB0F4006835F7 /* Article.swift in Sources */,
-				506FFA1E253EB0C7006835F7 /* TagsView.swift in Sources */,
+				506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
