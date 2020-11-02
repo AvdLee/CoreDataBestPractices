@@ -73,23 +73,19 @@ final class ArticlesListTableViewController: UICollectionViewController {
 
     // MARK: Presenting Views
     private func presentTagsView() {
-        // Get the managed object context from the shared persistent container.
-        let context = PersistentContainer.shared.viewContext
-
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let tagsView = TagsView().environment(\.managedObjectContext, context)
+        let tagsView = TagsView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: tagsView)
         present(hostingController, animated: true, completion: nil)
     }
 
     private func presentAddArticleView() {
-        let article = Article(context: PersistentContainer.shared.viewContext)
-        article.name = "SwiftLee Post"
-        let tag = Tag(context: PersistentContainer.shared.viewContext)
-        tag.name = "SwiftUI"
-        article.tags = [tag]
-        try! PersistentContainer.shared.viewContext.saveIfNeeded()
+        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
+        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
+        let articleView = ArticleFormView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+        let hostingController = UIHostingController(rootView: articleView)
+        present(hostingController, animated: true, completion: nil)
     }
 }
 

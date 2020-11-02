@@ -19,6 +19,7 @@
 		506FFA29253EB0C8006835F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */; };
 		506FFA33253EB0F4006835F7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA32253EB0F4006835F7 /* Article.swift */; };
 		50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2D5AF25474ABC00BAA59C /* Tag.swift */; };
+		50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7CFB2255093A300E75FDA /* ArticleFormView.swift */; };
 		50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		506FFA2A253EB0C8006835F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506FFA32253EB0F4006835F7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		50C2D5AF25474ABC00BAA59C /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		50D7CFB2255093A300E75FDA /* ArticleFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFormView.swift; sourceTree = "<group>"; };
 		50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,13 +72,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		506B5D2F255088A500A82629 /* Articles */ = {
+		506B5D2F255088A500A82629 /* Articles List */ = {
 			isa = PBXGroup;
 			children = (
 				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
 				506B5D30255088B300A82629 /* ArticlesListViewModel.swift */,
 			);
-			path = Articles;
+			path = "Articles List";
 			sourceTree = "<group>";
 		};
 		506FFA0D253EB0C7006835F7 = {
@@ -125,11 +127,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		50D7CFB02550937A00E75FDA /* Tags List */ = {
+			isa = PBXGroup;
+			children = (
+				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
+			);
+			path = "Tags List";
+			sourceTree = "<group>";
+		};
+		50D7CFB12550938A00E75FDA /* Create Article */ = {
+			isa = PBXGroup;
+			children = (
+				50D7CFB2255093A300E75FDA /* ArticleFormView.swift */,
+			);
+			path = "Create Article";
+			sourceTree = "<group>";
+		};
 		50F27FE9255085350057381C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				506B5D2F255088A500A82629 /* Articles */,
-				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
+				506B5D2F255088A500A82629 /* Articles List */,
+				50D7CFB12550938A00E75FDA /* Create Article */,
+				50D7CFB02550937A00E75FDA /* Tags List */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +254,7 @@
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
 				506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */,
 				506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */,
+				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
