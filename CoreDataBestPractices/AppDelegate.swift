@@ -12,11 +12,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let content = Content(context: persistentContainer.viewContext)
-        content.localResource = URL(string: "file://www/rocketsim/app")!
-        print(content)
+        let article = Article(context: persistentContainer.viewContext)
+        article.localResource = URL(string: "file://www/rocketsim/app")!
+        print(article)
         try! persistentContainer.viewContext.save()
-        print(content)
+        print(article)
 
 //        persistentContainer.viewContext.delete(content)
         try! persistentContainer.viewContext.save()
@@ -30,13 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func updateName(_ name: String, for email: String) throws {
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(User.email), email)
+        let fetchRequest = NSFetchRequest<Tag>(entityName: "Tag")
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.email), email)
 
         if let existingUser = try persistentContainer.viewContext.fetch(fetchRequest).first {
             existingUser.name = name
         } else {
-            let newUser = User(context: persistentContainer.viewContext)
+            let newUser = Tag(context: persistentContainer.viewContext)
             newUser.email = email
             newUser.name = name
         }

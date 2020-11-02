@@ -1,5 +1,5 @@
 //
-//  Content.swift
+//  Article.swift
 //  CoreDataBestPractices
 //
 //  Created by Antoine van der Lee on 20/10/2020.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class Content: NSManagedObject, Identifiable {
+final class Article: NSManagedObject, Identifiable {
 
     @NSManaged var name: String?
     @NSManaged var publicIdentifier: String!
@@ -19,14 +19,14 @@ final class Content: NSManagedObject, Identifiable {
     override func awakeFromInsert() {
         super.awakeFromInsert()
 
-        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(Content.publicIdentifier))
-        setPrimitiveValue(Date(), forKey: #keyPath(Content.creationDate))
-        setPrimitiveValue(Date(), forKey: #keyPath(Content.lastModifiedDate))
+        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(Article.publicIdentifier))
+        setPrimitiveValue(Date(), forKey: #keyPath(Article.creationDate))
+        setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
     }
 
     override func willSave() {
         super.willSave()
-        setPrimitiveValue(Date(), forKey: #keyPath(Content.lastModifiedDate))
+        setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
 
         if isDeleted, let localResource = localResource {
             do {
@@ -40,12 +40,6 @@ final class Content: NSManagedObject, Identifiable {
     override func prepareForDeletion() {
         super.prepareForDeletion()
         NetworkProvider.shared.cancelAllRequests(for: self)
-    }
-}
-
-extension Content {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Content> {
-        return NSFetchRequest<Content>(entityName: "Content")
     }
 }
 

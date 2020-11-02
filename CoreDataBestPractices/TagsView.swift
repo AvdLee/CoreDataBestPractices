@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TagsView.swift
 //  CoreDataBestPractices
 //
 //  Created by Antoine van der Lee on 20/10/2020.
@@ -7,27 +7,27 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TagsView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(entity: User.entity(), sortDescriptors: []) var users: FetchedResults<User>
+    @FetchRequest(entity: Tag.entity(), sortDescriptors: []) var tags: FetchedResults<Tag>
 
     var body: some View {
         NavigationView {
             VStack {
-                List(users, id: \.self) { user in
+                List(tags, id: \.self) { tag in
                     VStack(alignment: .leading) {
-                        Text(user.name ?? "Ghost")
-                        Text(user.publicIdentifier)
+                        Text(tag.name ?? "Ghost")
+                        Text(tag.publicIdentifier)
                             .font(.footnote)
                     }
                 }
             }
-            .navigationBarTitle("Users")
+            .navigationBarTitle("Tags")
             .navigationBarItems(leading:
                 Button("Add") {
-                    let user = User(context: managedObjectContext)
-                    user.name = "Antoine van der Lee"
+                    let user = Tag(context: managedObjectContext)
+                    user.name = "SwiftUI"
             }, trailing:
                 Button("Save") {
                     try! self.managedObjectContext.save()
@@ -36,8 +36,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TagsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TagsView()
     }
 }

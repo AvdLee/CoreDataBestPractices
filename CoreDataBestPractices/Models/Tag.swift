@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class User: NSManagedObject, Identifiable {
+final class Tag: NSManagedObject, Identifiable {
 
     @NSManaged var name: String?
     @NSManaged var email: String?
@@ -17,12 +17,12 @@ final class User: NSManagedObject, Identifiable {
     override func awakeFromInsert() {
         super.awakeFromInsert()
 
-        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(User.publicIdentifier))
+        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(Tag.publicIdentifier))
     }
 }
 
-extension User {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
-        return NSFetchRequest<User>(entityName: "User")
+extension Tag {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Tag> {
+        return NSFetchRequest<Tag>(entityName: "Tag")
     }
 }
