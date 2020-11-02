@@ -22,7 +22,7 @@ final class ArticlesListTableViewController: UICollectionViewController {
             var content = cell.defaultContentConfiguration()
             content.text = article.name
 
-//            content.secondaryText = article.tags
+            content.secondaryText = article.tags.compactMap { $0.name }.joined(separator: ", ")
             content.secondaryTextProperties.color = .secondaryLabel
             content.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .subheadline)
 
@@ -30,11 +30,6 @@ final class ArticlesListTableViewController: UICollectionViewController {
             content.imageProperties.preferredSymbolConfiguration = .init(font: content.textProperties.font, scale: .large)
 
             cell.contentConfiguration = content
-
-            // Example of setting a background configuration
-            //            var background = UIBackgroundConfiguration.listPlainCell()
-            //            background.backgroundColor = .systemYellow
-            //            cell.backgroundConfiguration = background
             cell.accessories = [.disclosureIndicator()]
             cell.tintColor = UIColor(named: "SwiftLee Orange")
         }
@@ -52,7 +47,6 @@ final class ArticlesListTableViewController: UICollectionViewController {
 
     init() {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-//        config.backgroundColor = .secondarySystemBackground
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         super.init(collectionViewLayout: layout)
     }
@@ -92,6 +86,9 @@ final class ArticlesListTableViewController: UICollectionViewController {
     private func presentAddArticleView() {
         let article = Article(context: PersistentContainer.shared.viewContext)
         article.name = "SwiftLee Post"
+        let tag = Tag(context: PersistentContainer.shared.viewContext)
+        tag.name = "SwiftUI"
+        article.tags = [tag]
         try! PersistentContainer.shared.viewContext.saveIfNeeded()
     }
 }

@@ -5,13 +5,12 @@
         <attribute name="lastModifiedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="localResource" optional="YES" attributeType="URI"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
-        <attribute name="publicIdentifier" attributeType="String"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="articles" inverseEntity="Tag"/>
+        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="articles" inverseEntity="Tag"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="articlesCount" optional="YES" attributeType="Integer 64" derived="YES" derivationExpression="articles.@count" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="tags" inverseEntity="Article"/>
+        <relationship name="articles" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="tags" inverseEntity="Article"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -19,7 +18,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Article" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Article" positionX="-54" positionY="-9" width="128" height="118"/>
         <element name="Tag" positionX="-45" positionY="36" width="128" height="88"/>
     </elements>
 </model>

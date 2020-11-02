@@ -11,15 +11,14 @@ import CoreData
 final class Article: NSManagedObject, Identifiable {
 
     @NSManaged var name: String?
-    @NSManaged var publicIdentifier: String!
     @NSManaged var creationDate: Date!
     @NSManaged var lastModifiedDate: Date!
     @NSManaged var localResource: URL?
+    @NSManaged var tags: Set<Tag>
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
 
-        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(Article.publicIdentifier))
         setPrimitiveValue(Date(), forKey: #keyPath(Article.creationDate))
         setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
     }
