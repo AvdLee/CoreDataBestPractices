@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
+		506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
 		506FFA1E253EB0C7006835F7 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* TagsView.swift */; };
-		506FFA21253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1F253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld */; };
+		506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */; };
 		506FFA23253EB0C8006835F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA22253EB0C8006835F7 /* Assets.xcassets */; };
 		506FFA26253EB0C8006835F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA25253EB0C8006835F7 /* Preview Assets.xcassets */; };
 		506FFA29253EB0C8006835F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */; };
@@ -20,7 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		506FFA16253EB0C7006835F7 /* CoreDataBestPractices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataBestPractices.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
+		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		506FFA1D253EB0C7006835F7 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
@@ -45,6 +49,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		506B5D0A255086A600A82629 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				506B5D0F2550877C00A82629 /* Extensions */,
+				506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */,
+				506FFA31253EB0EC006835F7 /* Models */,
+				506B5D0B255086BE00A82629 /* PersistentContainer.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		506B5D0F2550877C00A82629 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		506FFA0D253EB0C7006835F7 = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +79,7 @@
 		506FFA17253EB0C7006835F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				506FFA16253EB0C7006835F7 /* CoreDataBestPractices.app */,
+				506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,8 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				50F27FEA255085400057381C /* Application */,
-				506FFA1F253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld */,
-				506FFA31253EB0EC006835F7 /* Models */,
+				506B5D0A255086A600A82629 /* Core Data */,
 				506FFA24253EB0C8006835F7 /* Preview Content */,
 				50F27FEB255085530057381C /* Resources */,
 				50F27FEC255085620057381C /* Supporting Files */,
@@ -130,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		506FFA15253EB0C7006835F7 /* CoreDataBestPractices */ = {
+		506FFA15253EB0C7006835F7 /* Core Data Best Practices */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 506FFA2D253EB0C8006835F7 /* Build configuration list for PBXNativeTarget "CoreDataBestPractices" */;
+			buildConfigurationList = 506FFA2D253EB0C8006835F7 /* Build configuration list for PBXNativeTarget "Core Data Best Practices" */;
 			buildPhases = (
 				506FFA12253EB0C7006835F7 /* Sources */,
 				506FFA13253EB0C7006835F7 /* Frameworks */,
@@ -142,9 +164,9 @@
 			);
 			dependencies = (
 			);
-			name = CoreDataBestPractices;
+			name = "Core Data Best Practices";
 			productName = CoreDataBestPractices;
-			productReference = 506FFA16253EB0C7006835F7 /* CoreDataBestPractices.app */;
+			productReference = 506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				506FFA15253EB0C7006835F7 /* CoreDataBestPractices */,
+				506FFA15253EB0C7006835F7 /* Core Data Best Practices */,
 			);
 		};
 /* End PBXProject section */
@@ -197,8 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */,
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
-				506FFA21253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld in Sources */,
+				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
+				506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
@@ -346,7 +370,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CoreDataBestPractices/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QMDKC8VLJ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = CoreDataBestPractices/Info.plist;
+				INFOPLIST_FILE = "CoreDataBestPractices/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,7 +391,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CoreDataBestPractices/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QMDKC8VLJ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = CoreDataBestPractices/Info.plist;
+				INFOPLIST_FILE = "CoreDataBestPractices/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,7 +415,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		506FFA2D253EB0C8006835F7 /* Build configuration list for PBXNativeTarget "CoreDataBestPractices" */ = {
+		506FFA2D253EB0C8006835F7 /* Build configuration list for PBXNativeTarget "Core Data Best Practices" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				506FFA2E253EB0C8006835F7 /* Debug */,
@@ -403,13 +427,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		506FFA1F253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld */ = {
+		506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				506FFA20253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodel */,
 			);
 			currentVersion = 506FFA20253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodel */;
-			path = CoreDataBestPractices.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -35,7 +35,7 @@ final class ArticlesListTableViewController: UITableViewController {
 
     private func presentTagsView() {
         // Get the managed object context from the shared persistent container.
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = PersistentContainer.shared.viewContext
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
