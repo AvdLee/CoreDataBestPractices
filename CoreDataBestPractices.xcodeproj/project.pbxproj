@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
 		506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */; };
+		506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D30255088B300A82629 /* ArticlesListViewModel.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
 		506FFA1E253EB0C7006835F7 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* TagsView.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
+		506B5D30255088B300A82629 /* ArticlesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListViewModel.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,8 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				506B5D0F2550877C00A82629 /* Extensions */,
-				506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */,
 				506FFA31253EB0EC006835F7 /* Models */,
+				506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */,
 				506B5D0B255086BE00A82629 /* PersistentContainer.swift */,
 			);
 			path = "Core Data";
@@ -66,6 +68,15 @@
 				506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		506B5D2F255088A500A82629 /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
+				506B5D30255088B300A82629 /* ArticlesListViewModel.swift */,
+			);
+			path = Articles;
 			sourceTree = "<group>";
 		};
 		506FFA0D253EB0C7006835F7 = {
@@ -117,8 +128,8 @@
 		50F27FE9255085350057381C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				506B5D2F255088A500A82629 /* Articles */,
 				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
-				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +233,7 @@
 				506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */,
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
+				506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */,
 				506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */,
