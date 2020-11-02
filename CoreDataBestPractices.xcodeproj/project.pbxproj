@@ -16,6 +16,7 @@
 		506FFA29253EB0C8006835F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */; };
 		506FFA33253EB0F4006835F7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA32253EB0F4006835F7 /* Article.swift */; };
 		50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2D5AF25474ABC00BAA59C /* Tag.swift */; };
+		50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		506FFA2A253EB0C8006835F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506FFA32253EB0F4006835F7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		50C2D5AF25474ABC00BAA59C /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +64,13 @@
 		506FFA18253EB0C7006835F7 /* CoreDataBestPractices */ = {
 			isa = PBXGroup;
 			children = (
-				506FFA31253EB0EC006835F7 /* Models */,
-				506FFA19253EB0C7006835F7 /* AppDelegate.swift */,
-				506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */,
-				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
-				506FFA22253EB0C8006835F7 /* Assets.xcassets */,
-				506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */,
-				506FFA2A253EB0C8006835F7 /* Info.plist */,
+				50F27FEA255085400057381C /* Application */,
 				506FFA1F253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld */,
+				506FFA31253EB0EC006835F7 /* Models */,
 				506FFA24253EB0C8006835F7 /* Preview Content */,
+				50F27FEB255085530057381C /* Resources */,
+				50F27FEC255085620057381C /* Supporting Files */,
+				50F27FE9255085350057381C /* Views */,
 			);
 			path = CoreDataBestPractices;
 			sourceTree = "<group>";
@@ -90,6 +90,41 @@
 				50C2D5AF25474ABC00BAA59C /* Tag.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		50F27FE9255085350057381C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				506FFA1D253EB0C7006835F7 /* TagsView.swift */,
+				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		50F27FEA255085400057381C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				506FFA19253EB0C7006835F7 /* AppDelegate.swift */,
+				506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		50F27FEB255085530057381C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				506FFA22253EB0C8006835F7 /* Assets.xcassets */,
+				506FFA27253EB0C8006835F7 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		50F27FEC255085620057381C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				506FFA2A253EB0C8006835F7 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +199,7 @@
 			files = (
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* CoreDataBestPractices.xcdatamodeld in Sources */,
+				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Tag.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
 				506FFA33253EB0F4006835F7 /* Article.swift in Sources */,

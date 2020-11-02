@@ -12,36 +12,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let article = Article(context: persistentContainer.viewContext)
-        article.localResource = URL(string: "file://www/rocketsim/app")!
-        print(article)
-        try! persistentContainer.viewContext.save()
-        print(article)
-
-//        persistentContainer.viewContext.delete(content)
-        try! persistentContainer.viewContext.save()
-
-//        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         persistentContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
 
-        try! updateName("Antoine", for: "771BDBF1-D309-40A3-A139-9B5D38601A4A")
-
         return true
-    }
-
-    private func updateName(_ name: String, for email: String) throws {
-        let fetchRequest = NSFetchRequest<Tag>(entityName: "Tag")
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.email), email)
-
-        if let existingUser = try persistentContainer.viewContext.fetch(fetchRequest).first {
-            existingUser.name = name
-        } else {
-            let newUser = Tag(context: persistentContainer.viewContext)
-            newUser.email = email
-            newUser.name = name
-        }
-
-        try persistentContainer.viewContext.save()
     }
 
     // MARK: UISceneSession Lifecycle

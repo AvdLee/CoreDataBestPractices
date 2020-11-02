@@ -18,7 +18,7 @@ struct TagsView: View {
                 List(tags, id: \.self) { tag in
                     VStack(alignment: .leading) {
                         Text(tag.name ?? "Ghost")
-                        Text(tag.publicIdentifier)
+                        Text("Number of articles: \(tag.articlesCount)")
                             .font(.footnote)
                     }
                 }

@@ -7,18 +7,12 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 final class Tag: NSManagedObject, Identifiable {
 
     @NSManaged var name: String?
-    @NSManaged var email: String?
-    @NSManaged var publicIdentifier: String!
-
-    override func awakeFromInsert() {
-        super.awakeFromInsert()
-
-        setPrimitiveValue(UUID().uuidString, forKey: #keyPath(Tag.publicIdentifier))
-    }
+    @NSManaged var articlesCount: Int
 }
 
 extension Tag {
