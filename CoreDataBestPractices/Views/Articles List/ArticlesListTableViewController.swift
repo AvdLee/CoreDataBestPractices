@@ -22,7 +22,7 @@ final class ArticlesListTableViewController: UICollectionViewController {
             var content = cell.defaultContentConfiguration()
             content.text = article.name
 
-            content.secondaryText = article.category?.name ?? "Uncategorized"
+            content.secondaryText = article.categoryName ?? "Uncategorized"
             content.secondaryTextProperties.color = .secondaryLabel
             content.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .subheadline)
 
@@ -66,26 +66,86 @@ final class ArticlesListTableViewController: UICollectionViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", primaryAction: UIAction(handler: { _ in
             self.presentTagsView()
         }))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: UIBarButtonItem.SystemItem.add, primaryAction: UIAction(handler: { _ in
-            self.presentAddArticleView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), primaryAction: UIAction(handler: { _ in
+            self.showMoreOptions()
         }))
+        setToolbarItems([
+            UIBarButtonItem(title: "Add new article", primaryAction: UIAction(handler: { _ in
+                self.presentAddArticleView()
+            }))
+        ], animated: true)
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+
+    // MARK: Data Generation
+    private func triggerDerivationExamples() {
+        let category = Category(context: PersistentContainer.shared.viewContext)
+        category.name = "SwiftUI"
+
+        let article = Article(context: PersistentContainer.shared.viewContext)
+        article.name = "A Title With Case and Díäcrîtįcs"
+        article.category = category
+
+        try! PersistentContainer.shared.viewContext.saveIfNeeded()
+
+        print("Original name: \(article.name) derived name for searching: \(article.searchName)")
+        print("Manual modified date: \(article.lastModifiedDate) derived modified date: \(article.derivedModifiedDate)")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            article.name = "A new title"
+
+            try! PersistentContainer.shared.viewContext.saveIfNeeded()
+
+            print("Manual modified date: \(article.lastModifiedDate) derived modified date: \(article.derivedModifiedDate)")
+        }
     }
 
     // MARK: Presenting Views
+    private func showMoreOptions() {
+        let alert = UIAlertController(title: "Actions", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Create 1000 articles", style: .default, handler: { _ in
+            self.generateArticles()
+        }))
+        alert.addAction(UIAlertAction(title: "Derivation Example", style: .default, handler: { _ in
+            self.triggerDerivationExamples()
+        }))
+        alert.addAction(UIAlertAction(title: "Delete All Articles", style: .destructive, handler: { _ in
+            self.deleteAllArticles()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     private func presentTagsView() {
-        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
-        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let categoriesView = CategoriesView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: categoriesView)
         present(hostingController, animated: true, completion: nil)
     }
 
     private func presentAddArticleView() {
-        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
-        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let articleView = ArticleFormView(dismiss: { self.dismiss(animated: true) }).environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: articleView)
         present(hostingController, animated: true, completion: nil)
+    }
+
+    private func generateArticles() {
+        let category = Category(context: PersistentContainer.shared.viewContext)
+        category.name = "SwiftUI"
+
+        (0..<1000).forEach { index in
+            let article = Article(context: PersistentContainer.shared.viewContext)
+            article.name = "Generated \(index)"
+            article.category = category
+        }
+        try! PersistentContainer.shared.viewContext.saveIfNeeded()
+    }
+
+    private func deleteAllArticles() {
+        // Options 1:
+//        try! Article.deleteAllOneByOne(in: PersistentContainer.shared.viewContext)
+
+        // Options 2:
+        try! Article.deleteAllInBatch(in: PersistentContainer.shared.viewContext)
     }
 }
 

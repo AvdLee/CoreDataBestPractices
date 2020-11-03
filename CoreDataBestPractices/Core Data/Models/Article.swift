@@ -24,10 +24,13 @@ final class Article: NSManagedObject, Identifiable {
     static let protectedNames: [String] = ["swiftlee", "antoine", "nsspain"]
 
     @NSManaged var name: String
+    @NSManaged var searchName: String
     @NSManaged var creationDate: Date!
-    @NSManaged var lastModifiedDate: Date!
+    @NSManaged var derivedModifiedDate: Date
+    @NSManaged var lastModifiedDate: Date
     @NSManaged var localResource: URL?
     @NSManaged var category: Category?
+    @NSManaged var categoryName: String?
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
@@ -38,6 +41,7 @@ final class Article: NSManagedObject, Identifiable {
 
     override func willSave() {
         super.willSave()
+
         setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
 
         if isDeleted, let localResource = localResource {

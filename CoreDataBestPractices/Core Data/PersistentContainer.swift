@@ -12,7 +12,11 @@ final class PersistentContainer: NSPersistentContainer {
 
     static let shared = PersistentContainer(name: "DataModel")
 
+    private var persistentHistoryObserver: PersistentHistoryObserver?
+
     func setup() {
+        enablePersistentHistoryTracking()
+        
         loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -31,6 +35,8 @@ final class PersistentContainer: NSPersistentContainer {
         })
 
         viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+
+        persistentHistoryObserver = startObservingPersistentHistoryTransactions()
     }
 
 }

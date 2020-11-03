@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501A784F2551876400C1DDF3 /* Deletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A784E2551876400C1DDF3 /* Deletions.swift */; };
+		501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */; };
+		501A785625518CA000C1DDF3 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */; };
+		501A785A25518CBB00C1DDF3 /* PersistentHistoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785925518CBB00C1DDF3 /* PersistentHistoryObserver.swift */; };
+		501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785C25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift */; };
+		501A786025518CE100C1DDF3 /* PersistentHistoryCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */; };
 		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
 		506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */; };
 		506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D30255088B300A82629 /* ArticlesListViewModel.swift */; };
@@ -24,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		501A784E2551876400C1DDF3 /* Deletions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deletions.swift; sourceTree = "<group>"; };
+		501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryTracking.swift; sourceTree = "<group>"; };
+		501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryMerger.swift; sourceTree = "<group>"; };
+		501A785925518CBB00C1DDF3 /* PersistentHistoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryObserver.swift; sourceTree = "<group>"; };
+		501A785C25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryFetcher.swift; sourceTree = "<group>"; };
+		501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryCleaner.swift; sourceTree = "<group>"; };
 		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		506B5D102550878900A82629 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		506B5D30255088B300A82629 /* ArticlesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +65,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501A784D2551875500C1DDF3 /* Best Practices */ = {
+			isa = PBXGroup;
+			children = (
+				501A784E2551876400C1DDF3 /* Deletions.swift */,
+				501A785425518C8700C1DDF3 /* Persistent History Tracking */,
+			);
+			path = "Best Practices";
+			sourceTree = "<group>";
+		};
+		501A785425518C8700C1DDF3 /* Persistent History Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */,
+				501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */,
+				501A785925518CBB00C1DDF3 /* PersistentHistoryObserver.swift */,
+				501A785C25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift */,
+				501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */,
+			);
+			path = "Persistent History Tracking";
+			sourceTree = "<group>";
+		};
 		506B5D0A255086A600A82629 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				50F27FEA255085400057381C /* Application */,
+				501A784D2551875500C1DDF3 /* Best Practices */,
 				506B5D0A255086A600A82629 /* Core Data */,
 				506FFA24253EB0C8006835F7 /* Preview Content */,
 				50F27FEB255085530057381C /* Resources */,
@@ -253,13 +287,19 @@
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
 				506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */,
+				501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */,
 				506B5D112550878900A82629 /* NSManagedObjectContextExtensions.swift in Sources */,
 				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Category.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
+				501A784F2551876400C1DDF3 /* Deletions.swift in Sources */,
 				506FFA33253EB0F4006835F7 /* Article.swift in Sources */,
 				506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */,
+				501A786025518CE100C1DDF3 /* PersistentHistoryCleaner.swift in Sources */,
+				501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */,
+				501A785625518CA000C1DDF3 /* PersistentHistoryMerger.swift in Sources */,
+				501A785A25518CBB00C1DDF3 /* PersistentHistoryObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

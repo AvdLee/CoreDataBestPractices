@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Article" representedClassName=".Article" syncable="YES">
+        <attribute name="categoryName" optional="YES" attributeType="String" derived="YES" derivationExpression="category.name"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="derivedModifiedDate" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
         <attribute name="lastModifiedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="localResource" optional="YES" attributeType="URI"/>
         <attribute name="name" attributeType="String" minValueString="3" maxValueString="32"/>
+        <attribute name="searchName" optional="YES" attributeType="String" derived="YES" derivationExpression="canonical:(name)"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="articles" inverseEntity="Category"/>
     </entity>
     <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="articlesCount" optional="YES" attributeType="Integer 64" derived="YES" derivationExpression="articles.@count" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="articles" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="category" inverseEntity="Article"/>
+        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="category" inverseEntity="Article"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -18,7 +21,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Article" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="Article" positionX="-54" positionY="-9" width="128" height="163"/>
         <element name="Category" positionX="-45" positionY="36" width="128" height="88"/>
     </elements>
 </model>
