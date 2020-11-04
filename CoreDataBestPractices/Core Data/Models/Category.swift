@@ -14,6 +14,7 @@ final class Category: NSManagedObject, Identifiable {
     @NSManaged var name: String
     @NSManaged var articlesCount: Int
     @NSManaged var articles: Set<Article>!
+    @NSManaged var color: UIColor
 }
 
 extension Category {

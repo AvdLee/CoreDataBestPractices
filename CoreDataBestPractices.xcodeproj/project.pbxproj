@@ -18,6 +18,8 @@
 		50599EB22552DF07005AF34B /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EB12552DF07005AF34B /* Saving.swift */; };
 		50599EBB2552DFB1005AF34B /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EBA2552DFB1005AF34B /* Constraints.swift */; };
 		50599EC12552E10B005AF34B /* DerivedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EC02552E10B005AF34B /* DerivedAttributes.swift */; };
+		50599F7F2552FF37005AF34B /* Transformables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F7E2552FF37005AF34B /* Transformables.swift */; };
+		50599F83255302A2005AF34B /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F82255302A2005AF34B /* Validating.swift */; };
 		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
 		506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D30255088B300A82629 /* ArticlesListViewModel.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 		50599EB12552DF07005AF34B /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
 		50599EBA2552DFB1005AF34B /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		50599EC02552E10B005AF34B /* DerivedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedAttributes.swift; sourceTree = "<group>"; };
+		50599F7E2552FF37005AF34B /* Transformables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformables.swift; sourceTree = "<group>"; };
+		50599F82255302A2005AF34B /* Validating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validating.swift; sourceTree = "<group>"; };
 		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		506B5D30255088B300A82629 /* ArticlesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListViewModel.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,8 @@
 			children = (
 				50599EBA2552DFB1005AF34B /* Constraints.swift */,
 				50599EC02552E10B005AF34B /* DerivedAttributes.swift */,
+				50599F7E2552FF37005AF34B /* Transformables.swift */,
+				50599F82255302A2005AF34B /* Validating.swift */,
 			);
 			path = "Model Configurations";
 			sourceTree = "<group>";
@@ -362,10 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50599F83255302A2005AF34B /* Validating.swift in Sources */,
 				506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */,
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
 				506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */,
+				50599F7F2552FF37005AF34B /* Transformables.swift in Sources */,
 				50599EBB2552DFB1005AF34B /* Constraints.swift in Sources */,
 				501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */,
 				50599EB22552DF07005AF34B /* Saving.swift in Sources */,

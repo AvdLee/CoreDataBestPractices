@@ -22,12 +22,12 @@ extension NSManagedObjectContext {
      */
     func demonstrateDerivedAttribute() {
         print("\n\n#####\n Derived Attributes Demonstration\n#####\n")
-        let category = Category(context: PersistentContainer.shared.viewContext)
-        category.name = "SwiftUI"
+        let category = Category.insertSample(into: PersistentContainer.shared.viewContext)
 
         let article = Article(context: PersistentContainer.shared.viewContext)
         article.name = "A Title With Case and Díäcrîtįcs"
         article.category = category
+        article.source = .generated
 
         try! PersistentContainer.shared.viewContext.saveIfNeeded()
 

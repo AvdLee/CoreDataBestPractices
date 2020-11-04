@@ -10,24 +10,22 @@ import CoreData
 
 final class Article: NSManagedObject, Identifiable {
 
-    enum Error: Swift.Error, LocalizedError {
-        case protectedName(name: String)
-
-        var recoverySuggestion: String? {
-            switch self {
-            case .protectedName(let name):
-                return "The name '\(name)' is protected and can't be used."
-            }
-        }
+    @objc enum Source: Int64 {
+        case unknown
+        case manuallyAdded
+        case generated
     }
-
-    static let protectedNames: [String] = ["swiftlee", "antoine", "nsspain"]
 
     @NSManaged var name: String
     @NSManaged var creationDate: Date!
     @NSManaged var lastModifiedDate: Date
     @NSManaged var localResource: URL?
     @NSManaged var category: Category?
+
+    // MARK: Transformables
+
+    /// Enums can be stored without transformables. Just use @objc with an integer type.
+    @NSManaged var source: Source
 
     // MARK: Derived Attributes
     /// Derived Attribute
@@ -66,15 +64,6 @@ final class Article: NSManagedObject, Identifiable {
     override func prepareForDeletion() {
         super.prepareForDeletion()
         NetworkProvider.shared.cancelAllRequests(for: self)
-    }
-
-    // MARK: Validations
-    override func validateForInsert() throws {
-        try super.validateForInsert()
-        
-        guard !Self.protectedNames.contains(name.lowercased()) else {
-            throw Error.protectedName(name: name)
-        }
     }
 }
 

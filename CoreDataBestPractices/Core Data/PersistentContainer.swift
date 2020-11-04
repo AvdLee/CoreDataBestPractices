@@ -15,6 +15,7 @@ final class PersistentContainer: NSPersistentContainer {
     private var persistentHistoryObserver: PersistentHistoryObserver?
 
     func setup() {
+        registerValueTransformers()
         enablePersistentHistoryTracking()
         
         loadPersistentStores(completionHandler: { (storeDescription, error) in

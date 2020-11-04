@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension Category {
 
@@ -21,9 +22,11 @@ extension Category {
 
      More info: https://www.avanderlee.com/swift/constraints-core-data-entities/
      */
-    static func insertSample(into context: NSManagedObjectContext) {
+    @discardableResult static func insertSample(into context: NSManagedObjectContext) -> Category {
         let category = Category(context: context)
         category.name = "SwiftUI"
+        category.color = UIColor(named: "SwiftLee Orange")!
+        return category
     }
 
 }

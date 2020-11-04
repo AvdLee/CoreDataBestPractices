@@ -18,6 +18,11 @@ struct CategoriesView: View {
                 List(categories, id: \.self) { category in
                     VStack(alignment: .leading) {
                         Text(category.name)
+                            .font(.system(size: 12))
+                            .padding(EdgeInsets(top: 4, leading: 7, bottom: 4, trailing: 7))
+                            .foregroundColor(.white)
+                            .background(Color(category.color))
+                            .cornerRadius(3)
                         Text("Number of articles: \(category.articlesCount)")
                             .font(.footnote)
                     }

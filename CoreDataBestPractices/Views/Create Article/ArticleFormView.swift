@@ -54,6 +54,7 @@ struct ArticleFormView: View {
         let article = Article(context: PersistentContainer.shared.viewContext)
         article.name = name
         article.category = categories[previewIndex]
+        article.source = .manuallyAdded
 
         do {
             try PersistentContainer.shared.viewContext.saveIfNeeded()

@@ -13,13 +13,13 @@ extension Article {
         let taskContext = PersistentContainer.shared.backgroundContext()
         taskContext.perform {
             do {
-                let category = Category(context: taskContext)
-                category.name = "SwiftUI"
+                let category = Category.insertSample(into: taskContext)
 
                 (0..<numberOfSamples).forEach { index in
                     let article = Article(context: taskContext)
                     article.name = String(format: "Generated %05d", index)
                     article.category = category
+                    article.source = .generated
                 }
 
                 try taskContext.save()
@@ -48,7 +48,8 @@ extension Article {
                     return [
                         "name": String(format: "Generated %05d", index),
                         "creationDate": creationDate,
-                        "lastModifiedDate": creationDate
+                        "lastModifiedDate": creationDate,
+                        "source": Article.Source.generated.rawValue
                     ]
                 }
                 try insertObjectsInBatch(objects, into: taskContext)
