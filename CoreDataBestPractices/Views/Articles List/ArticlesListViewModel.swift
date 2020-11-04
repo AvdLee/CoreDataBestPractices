@@ -16,6 +16,6 @@ final class ArticlesListViewModel {
         /// Presentation: rewrite this using 'Managed'.
         fetchRequest = NSFetchRequest<Article>(entityName: "Article")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Article.name), ascending: true)]
-        fetchRequest.fetchBatchSize = 16
+        fetchRequest.fetchBatchSize = 10
     }
 }

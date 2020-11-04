@@ -26,8 +26,7 @@ struct CategoriesView: View {
             .navigationBarTitle("Categories")
             .navigationBarItems(leading:
                 Button("Add") {
-                    let user = Category(context: managedObjectContext)
-                    user.name = "SwiftUI"
+                    Category.insertSample(into: managedObjectContext)
             }, trailing:
                 Button("Save") {
                     try! self.managedObjectContext.save()

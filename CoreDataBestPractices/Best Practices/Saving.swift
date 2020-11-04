@@ -1,8 +1,8 @@
 //
-//  NSManagedObjectContextExtensions.swift
+//  Saving.swift
 //  Core Data Best Practices
 //
-//  Created by Antoine van der Lee on 02/11/2020.
+//  Created by Antoine van der Lee on 04/11/2020.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ extension NSManagedObjectContext {
     var hasPersistentChanges: Bool {
         return !insertedObjects.isEmpty || !deletedObjects.isEmpty || updatedObjects.contains(where: { $0.hasPersistentChangedValues })
     }
-    
+
     /// Saves the context, only if it has any changes and if it has a place to save the changes to (parent or persistent store). Calling this method instead of the regular save() will increase performance. It is also useful to use this function when having a memory store, since this configuration doesn't have a persistent store but may use parent contexts to save their changes to.
     /// - throws: A Core Data NSError when saving fails.
     /// - returns: Whether the save was needed.

@@ -17,8 +17,9 @@ final class ArticlesListTableViewController: UICollectionViewController {
     private let viewModel = ArticlesListViewModel()
 
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NSManagedObjectID> = {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, NSManagedObjectID> { cell, _, articleObjectID in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, NSManagedObjectID> { cell, indexPath, articleObjectID in
             guard let article = try? PersistentContainer.shared.viewContext.existingObject(with: articleObjectID) as? Article else { return }
+
             var content = cell.defaultContentConfiguration()
             content.text = article.name
 
@@ -77,40 +78,23 @@ final class ArticlesListTableViewController: UICollectionViewController {
         navigationController?.setToolbarHidden(false, animated: false)
     }
 
-    // MARK: Data Generation
-    private func triggerDerivationExamples() {
-        let category = Category(context: PersistentContainer.shared.viewContext)
-        category.name = "SwiftUI"
-
-        let article = Article(context: PersistentContainer.shared.viewContext)
-        article.name = "A Title With Case and Díäcrîtįcs"
-        article.category = category
-
-        try! PersistentContainer.shared.viewContext.saveIfNeeded()
-
-        print("Original name: \(article.name) derived name for searching: \(article.searchName)")
-        print("Manual modified date: \(article.lastModifiedDate) derived modified date: \(article.derivedModifiedDate)")
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            article.name = "A new title"
-
-            try! PersistentContainer.shared.viewContext.saveIfNeeded()
-
-            print("Manual modified date: \(article.lastModifiedDate) derived modified date: \(article.derivedModifiedDate)")
-        }
-    }
-
     // MARK: Presenting Views
     private func showMoreOptions() {
         let alert = UIAlertController(title: "Actions", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Create 1000 articles", style: .default, handler: { _ in
-            self.generateArticles()
-        }))
         alert.addAction(UIAlertAction(title: "Derivation Example", style: .default, handler: { _ in
-            self.triggerDerivationExamples()
+            PersistentContainer.shared.viewContext.demonstrateDerivedAttribute()
         }))
-        alert.addAction(UIAlertAction(title: "Delete All Articles", style: .destructive, handler: { _ in
-            self.deleteAllArticles()
+        alert.addAction(UIAlertAction(title: "Insert 1000 1 by 1", style: .default, handler: { _ in
+            try! Article.insertSamplesOneByOne(1000)
+        }))
+        alert.addAction(UIAlertAction(title: "Insert 1000 In Batch", style: .default, handler: { _ in
+            try! Article.insertSamplesInBatch(1000)
+        }))
+        alert.addAction(UIAlertAction(title: "Delete All 1 by 1", style: .destructive, handler: { _ in
+            try! Article.deleteAllOneByOne()
+        }))
+        alert.addAction(UIAlertAction(title: "Delete All In Batch", style: .destructive, handler: { _ in
+            try! Article.deleteAllInBatch()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -127,30 +111,10 @@ final class ArticlesListTableViewController: UICollectionViewController {
         let hostingController = UIHostingController(rootView: articleView)
         present(hostingController, animated: true, completion: nil)
     }
-
-    private func generateArticles() {
-        let category = Category(context: PersistentContainer.shared.viewContext)
-        category.name = "SwiftUI"
-
-        (0..<1000).forEach { index in
-            let article = Article(context: PersistentContainer.shared.viewContext)
-            article.name = "Generated \(index)"
-            article.category = category
-        }
-        try! PersistentContainer.shared.viewContext.saveIfNeeded()
-    }
-
-    private func deleteAllArticles() {
-        // Options 1:
-//        try! Article.deleteAllOneByOne(in: PersistentContainer.shared.viewContext)
-
-        // Options 2:
-        try! Article.deleteAllInBatch(in: PersistentContainer.shared.viewContext)
-    }
 }
 
 extension ArticlesListTableViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        dataSource.apply(snapshot as NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>)
+        dataSource.apply(snapshot as NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>, animatingDifferences: true)
     }
 }

@@ -24,14 +24,24 @@ final class Article: NSManagedObject, Identifiable {
     static let protectedNames: [String] = ["swiftlee", "antoine", "nsspain"]
 
     @NSManaged var name: String
-    @NSManaged var searchName: String
     @NSManaged var creationDate: Date!
-    @NSManaged var derivedModifiedDate: Date
     @NSManaged var lastModifiedDate: Date
     @NSManaged var localResource: URL?
     @NSManaged var category: Category?
+
+    // MARK: Derived Attributes
+    /// Derived Attribute
+    /// The derivation improves search performant by creating a name attribute with case and diacritics removed for more efficient comparison.
+    /// Without this, unicode normalization would have to happen at search time, which is much slower than plain string matching would be.
+    @NSManaged var searchName: String
+
+    /// Derived Attribute using the key path `category.name`.
     @NSManaged var categoryName: String?
 
+    /// Derived Attribute using `now()`.
+    @NSManaged var derivedModifiedDate: Date
+
+    // MARK: Live Cycle Events
     override func awakeFromInsert() {
         super.awakeFromInsert()
 
@@ -58,6 +68,7 @@ final class Article: NSManagedObject, Identifiable {
         NetworkProvider.shared.cancelAllRequests(for: self)
     }
 
+    // MARK: Validations
     override func validateForInsert() throws {
         try super.validateForInsert()
         

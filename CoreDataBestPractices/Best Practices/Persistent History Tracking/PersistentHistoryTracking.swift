@@ -19,13 +19,14 @@ extension PersistentContainer {
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
         persistentStoreDescriptions = [storeDescription]
-
-        viewContext.name = "view_context"
-        viewContext.transactionAuthor = "main_app"
     }
 
     func startObservingPersistentHistoryTransactions() -> PersistentHistoryObserver {
         let observer = PersistentHistoryObserver(target: .app, persistentContainer: self, userDefaults: .standard)
+
+        viewContext.name = "view_context"
+        viewContext.transactionAuthor = "main_app"
+
         observer.startObserving()
         return observer
     }

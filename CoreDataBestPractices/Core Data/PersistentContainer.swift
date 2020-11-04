@@ -39,4 +39,15 @@ final class PersistentContainer: NSPersistentContainer {
         persistentHistoryObserver = startObservingPersistentHistoryTransactions()
     }
 
+    /**
+     A convenience method for creating background contexts that specify the app as their transaction author.
+     */
+    func backgroundContext() -> NSManagedObjectContext {
+        let context = newBackgroundContext()
+        context.name = "background_context"
+        context.transactionAuthor = "main_app"
+        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        return context
+    }
+
 }
