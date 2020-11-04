@@ -10,13 +10,11 @@ import SwiftUI
 import CoreData
 
 final class ArticlesListTableViewController: UICollectionViewController {
-    private enum Section: CaseIterable {
+    enum Section: CaseIterable {
         case main
     }
 
-    private let viewModel = ArticlesListViewModel()
-
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NSManagedObjectID> = {
+    private(set) lazy var dataSource: UICollectionViewDiffableDataSource<Section, NSManagedObjectID> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, NSManagedObjectID> { cell, indexPath, articleObjectID in
             guard let article = try? PersistentContainer.shared.viewContext.existingObject(with: articleObjectID) as? Article else { return }
 
@@ -40,16 +38,13 @@ final class ArticlesListTableViewController: UICollectionViewController {
         }
     }()
 
-    private lazy var fetchedResultsController: NSFetchedResultsController<Article> = {
-        let fetchedResultsController = NSFetchedResultsController<Article>(fetchRequest: viewModel.fetchRequest, managedObjectContext: PersistentContainer.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
+    private let fetchedResultsController: NSFetchedResultsController<Article> = .articlesFetchedResultsController()
 
     init() {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         super.init(collectionViewLayout: layout)
+        fetchedResultsController.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -110,11 +105,5 @@ final class ArticlesListTableViewController: UICollectionViewController {
         let articleView = ArticleFormView(dismiss: { self.dismiss(animated: true) }).environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: articleView)
         present(hostingController, animated: true, completion: nil)
-    }
-}
-
-extension ArticlesListTableViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        dataSource.apply(snapshot as NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>, animatingDifferences: true)
     }
 }

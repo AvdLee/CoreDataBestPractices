@@ -20,8 +20,9 @@
 		50599EC12552E10B005AF34B /* DerivedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EC02552E10B005AF34B /* DerivedAttributes.swift */; };
 		50599F7F2552FF37005AF34B /* Transformables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F7E2552FF37005AF34B /* Transformables.swift */; };
 		50599F83255302A2005AF34B /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F82255302A2005AF34B /* Validating.swift */; };
+		50599F87255303D5005AF34B /* DiffableDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F86255303D5005AF34B /* DiffableDataSources.swift */; };
+		50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F8A25530498005AF34B /* FetchedResultsController.swift */; };
 		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
-		506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D30255088B300A82629 /* ArticlesListViewModel.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
 		506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* CategoriesView.swift */; };
@@ -61,8 +62,9 @@
 		50599EC02552E10B005AF34B /* DerivedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedAttributes.swift; sourceTree = "<group>"; };
 		50599F7E2552FF37005AF34B /* Transformables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformables.swift; sourceTree = "<group>"; };
 		50599F82255302A2005AF34B /* Validating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validating.swift; sourceTree = "<group>"; };
+		50599F86255303D5005AF34B /* DiffableDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSources.swift; sourceTree = "<group>"; };
+		50599F8A25530498005AF34B /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
-		506B5D30255088B300A82629 /* ArticlesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListViewModel.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,8 @@
 		501A784D2551875500C1DDF3 /* Best Practices */ = {
 			isa = PBXGroup;
 			children = (
+				50599F8A25530498005AF34B /* FetchedResultsController.swift */,
+				50599F86255303D5005AF34B /* DiffableDataSources.swift */,
 				50599EB12552DF07005AF34B /* Saving.swift */,
 				50599EB92552DF98005AF34B /* Model Configurations */,
 				501A784E2551876400C1DDF3 /* Deletions.swift */,
@@ -154,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
-				506B5D30255088B300A82629 /* ArticlesListViewModel.swift */,
 			);
 			path = "Articles List";
 			sourceTree = "<group>";
@@ -372,12 +375,12 @@
 				506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */,
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
-				506B5D31255088B300A82629 /* ArticlesListViewModel.swift in Sources */,
 				50599F7F2552FF37005AF34B /* Transformables.swift in Sources */,
 				50599EBB2552DFB1005AF34B /* Constraints.swift in Sources */,
 				501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */,
 				50599EB22552DF07005AF34B /* Saving.swift in Sources */,
 				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
+				50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Category.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
@@ -389,6 +392,7 @@
 				501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */,
 				501A785625518CA000C1DDF3 /* PersistentHistoryMerger.swift in Sources */,
 				501A785A25518CBB00C1DDF3 /* PersistentHistoryObserver.swift in Sources */,
+				50599F87255303D5005AF34B /* DiffableDataSources.swift in Sources */,
 				50599D9E2551ABFC005AF34B /* Insertions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
