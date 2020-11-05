@@ -44,15 +44,22 @@ extension Article {
         taskContext.perform {
             do {
                 let creationDate = Date()
-                let objects = (0..<numberOfSamples).map { index -> [String: Any] in
-                    return [
-                        "name": String(format: "Generated %05d", index),
-                        "creationDate": creationDate,
-                        "lastModifiedDate": creationDate,
-                        "source": Article.Source.generated.rawValue
-                    ]
-                }
-                try insertObjectsInBatch(objects, into: taskContext)
+
+                var index = 0
+                let insertRequest = NSBatchInsertRequest(entity: entity(), managedObjectHandler: { object -> Bool in
+                    guard index != numberOfSamples else {
+                        return true
+                    }
+                    let article = object as! Article
+                    article.name = String(format: "Generated %05d", index)
+                    article.creationDate = creationDate
+                    article.lastModifiedDate = creationDate
+                    article.source = .generated
+                    index += 1
+                    return false
+                })
+                try taskContext.execute(insertRequest)
+                
                 try taskContext.save()
                 taskContext.reset()
                 print("### \(#function): Batch inserted \(numberOfSamples) posts")
@@ -60,10 +67,5 @@ extension Article {
                 print("### \(#function): Failed to insert articles in batch: \(error)")
             }
         }
-    }
-
-    static func insertObjectsInBatch(_ objects: [[String: Any]], into context: NSManagedObjectContext) throws {
-        let insertRequest = NSBatchInsertRequest(entity: entity(), objects: objects)
-        try context.execute(insertRequest)
     }
 }

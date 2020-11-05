@@ -38,39 +38,4 @@ final class Article: NSManagedObject, Identifiable {
 
     /// Derived Attribute using `now()`.
     @NSManaged var derivedModifiedDate: Date
-
-    // MARK: Live Cycle Events
-    override func awakeFromInsert() {
-        super.awakeFromInsert()
-
-        setPrimitiveValue(Date(), forKey: #keyPath(Article.creationDate))
-        setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
-    }
-
-    override func willSave() {
-        super.willSave()
-
-        setPrimitiveValue(Date(), forKey: #keyPath(Article.lastModifiedDate))
-
-        if isDeleted, let localResource = localResource {
-            do {
-                try FileManager.default.removeItem(at: localResource)
-            } catch {
-                print("Removing local file failed with error: \(error)")
-            }
-        }
-    }
-
-    override func prepareForDeletion() {
-        super.prepareForDeletion()
-        NetworkProvider.shared.cancelAllRequests(for: self)
-    }
-}
-
-struct NetworkProvider {
-    static let shared = NetworkProvider()
-
-    func cancelAllRequests<T: Identifiable>(for identifiable: T) {
-
-    }
 }

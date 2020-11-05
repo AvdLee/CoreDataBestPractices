@@ -22,6 +22,8 @@
 		50599F83255302A2005AF34B /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F82255302A2005AF34B /* Validating.swift */; };
 		50599F87255303D5005AF34B /* DiffableDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F86255303D5005AF34B /* DiffableDataSources.swift */; };
 		50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F8A25530498005AF34B /* FetchedResultsController.swift */; };
+		50599F95255429B7005AF34B /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F94255429B7005AF34B /* Threading.swift */; };
+		50599F9925542C79005AF34B /* LifeCycleEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F9825542C79005AF34B /* LifeCycleEvents.swift */; };
 		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
@@ -64,6 +66,8 @@
 		50599F82255302A2005AF34B /* Validating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validating.swift; sourceTree = "<group>"; };
 		50599F86255303D5005AF34B /* DiffableDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSources.swift; sourceTree = "<group>"; };
 		50599F8A25530498005AF34B /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
+		50599F94255429B7005AF34B /* Threading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
+		50599F9825542C79005AF34B /* LifeCycleEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleEvents.swift; sourceTree = "<group>"; };
 		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				501A784E2551876400C1DDF3 /* Deletions.swift */,
 				50599D9D2551ABFC005AF34B /* Insertions.swift */,
 				501A785425518C8700C1DDF3 /* Persistent History Tracking */,
+				50599F94255429B7005AF34B /* Threading.swift */,
 			);
 			path = "Best Practices";
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				50599EC02552E10B005AF34B /* DerivedAttributes.swift */,
 				50599F7E2552FF37005AF34B /* Transformables.swift */,
 				50599F82255302A2005AF34B /* Validating.swift */,
+				50599F9825542C79005AF34B /* LifeCycleEvents.swift */,
 			);
 			path = "Model Configurations";
 			sourceTree = "<group>";
@@ -382,11 +388,13 @@
 				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
 				50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */,
 				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
+				50599F9925542C79005AF34B /* LifeCycleEvents.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Category.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
 				501A784F2551876400C1DDF3 /* Deletions.swift in Sources */,
 				50599EC12552E10B005AF34B /* DerivedAttributes.swift in Sources */,
 				506FFA33253EB0F4006835F7 /* Article.swift in Sources */,
+				50599F95255429B7005AF34B /* Threading.swift in Sources */,
 				506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */,
 				501A786025518CE100C1DDF3 /* PersistentHistoryCleaner.swift in Sources */,
 				501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */,

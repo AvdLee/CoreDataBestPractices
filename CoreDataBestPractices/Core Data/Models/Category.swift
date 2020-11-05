@@ -16,9 +16,3 @@ final class Category: NSManagedObject, Identifiable {
     @NSManaged var articles: Set<Article>!
     @NSManaged var color: UIColor
 }
-
-extension Category {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
-        return NSFetchRequest<Category>(entityName: "Category")
-    }
-}

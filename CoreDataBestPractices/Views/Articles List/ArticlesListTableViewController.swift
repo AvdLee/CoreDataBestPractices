@@ -86,7 +86,12 @@ final class ArticlesListTableViewController: UICollectionViewController {
             try! Article.insertSamplesInBatch(1000)
         }))
         alert.addAction(UIAlertAction(title: "Delete All 1 by 1", style: .destructive, handler: { _ in
-            try! Article.deleteAllOneByOne()
+
+            /// Use this to demonstrate a Core Data threading crash:
+//            PersistentContainer.shared.deleteObjects(self.fetchedResultsController.fetchedObjects!)
+            PersistentContainer.shared.deleteObjectsWithIDs(self.fetchedResultsController.fetchedObjects!.map { $0.objectID })
+
+            // try! Article.deleteAllOneByOne()
         }))
         alert.addAction(UIAlertAction(title: "Delete All In Batch", style: .destructive, handler: { _ in
             try! Article.deleteAllInBatch()
