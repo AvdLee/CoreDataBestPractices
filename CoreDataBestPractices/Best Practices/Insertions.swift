@@ -46,17 +46,6 @@ extension Article {
                 let creationDate = Date()
 
                 var index = 0
-                let insertDictionaryRequest = NSBatchInsertRequest(entity: entity(), dictionaryHandler: { dictionary -> Bool in
-                    guard index != numberOfSamples else {
-                        return true
-                    }
-                    dictionary["name"] = String(format: "Generated %05d", index)
-                    dictionary["creationDate"] = creationDate
-                    dictionary["lastModifiedDate"] = creationDate
-                    dictionary["source"] = Article.Source.generated.rawValue
-                    index += 1
-                    return false
-                })
 
                 let insertRequest = NSBatchInsertRequest(entity: entity(), managedObjectHandler: { object -> Bool in
                     guard index != numberOfSamples else {
@@ -70,7 +59,7 @@ extension Article {
                     index += 1
                     return false
                 })
-                try taskContext.execute(insertDictionaryRequest)
+                try taskContext.execute(insertRequest)
                 
                 try taskContext.save()
                 taskContext.reset()
