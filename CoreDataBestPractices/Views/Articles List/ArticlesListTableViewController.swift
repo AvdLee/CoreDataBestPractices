@@ -59,14 +59,14 @@ final class ArticlesListTableViewController: UICollectionViewController {
     }
 
     private func setupBarButtonItems() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", primaryAction: UIAction(handler: { _ in
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", primaryAction: UIAction(handler: { [unowned self] _ in
             self.presentTagsView()
         }))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), primaryAction: UIAction(handler: { _ in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), primaryAction: UIAction(handler: { [unowned self] _ in
             self.showMoreOptions()
         }))
         setToolbarItems([
-            UIBarButtonItem(title: "Add new article", primaryAction: UIAction(handler: { _ in
+            UIBarButtonItem(title: "Add new article", primaryAction: UIAction(handler: { [unowned self] _ in
                 self.presentAddArticleView()
             }))
         ], animated: true)
@@ -89,9 +89,9 @@ final class ArticlesListTableViewController: UICollectionViewController {
 
             /// Use this to demonstrate a Core Data threading crash:
 //            PersistentContainer.shared.deleteObjects(self.fetchedResultsController.fetchedObjects!)
-            PersistentContainer.shared.deleteObjectsWithIDs(self.fetchedResultsController.fetchedObjects!.map { $0.objectID })
+//            PersistentContainer.shared.deleteObjectsWithIDs(self.fetchedResultsController.fetchedObjects!.map { $0.objectID })
 
-            // try! Article.deleteAllOneByOne()
+             try! Article.deleteAllOneByOne()
         }))
         alert.addAction(UIAlertAction(title: "Delete All In Batch", style: .destructive, handler: { _ in
             try! Article.deleteAllInBatch()

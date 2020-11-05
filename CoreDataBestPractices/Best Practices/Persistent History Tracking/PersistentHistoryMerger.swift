@@ -27,8 +27,6 @@ struct PersistentHistoryMerger {
 
         print("Merging \(history.count) persistent history transactions for target \(currentTarget)")
 
-        history.merge(into: backgroundContext)
-
         viewContext.perform {
             history.merge(into: self.viewContext)
         }
@@ -44,8 +42,7 @@ extension Collection where Element == NSPersistentHistoryTransaction {
     /// - Parameter context: The managed object context in which the history transactions should be merged.
     func merge(into context: NSManagedObjectContext) {
         forEach { transaction in
-            guard let userInfo = transaction.objectIDNotification().userInfo else { return }
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: userInfo, into: [context])
+            context.mergeChanges(fromContextDidSave: transaction.objectIDNotification())
         }
     }
 }

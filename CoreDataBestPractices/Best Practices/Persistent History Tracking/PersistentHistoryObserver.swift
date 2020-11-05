@@ -13,7 +13,7 @@ public enum AppTarget: String, CaseIterable {
     case app
 
     /// An optional extension that could also make use of the same database.
-    case shareExtension
+    /// case shareExtension
 }
 
 public final class PersistentHistoryObserver {
@@ -75,6 +75,7 @@ extension UserDefaults {
     }
 
     func lastCommonTransactionTimestamp(in targets: [AppTarget]) -> Date? {
+        guard targets.count > 1 else { return lastHistoryTransactionTimestamp(for: targets.first!) }
         let timestamp = targets
             .map { lastHistoryTransactionTimestamp(for: $0) ?? .distantPast }
             .min() ?? .distantPast

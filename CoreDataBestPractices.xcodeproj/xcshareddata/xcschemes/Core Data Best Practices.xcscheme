@@ -79,7 +79,7 @@
          <EnvironmentVariable
             key = "SQLITE_AUTO_TRACE"
             value = "1"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "SQLITE_ENABLE_FILE_ASSERTIONS"

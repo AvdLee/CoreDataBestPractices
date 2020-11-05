@@ -63,6 +63,7 @@ extension Article {
                 
                 try taskContext.save()
                 taskContext.reset()
+
                 print("### \(#function): Batch inserted \(numberOfSamples) posts")
             } catch {
                 print("### \(#function): Failed to insert articles in batch: \(error)")

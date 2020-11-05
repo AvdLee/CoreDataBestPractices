@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */,
-				501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */,
 				501A785925518CBB00C1DDF3 /* PersistentHistoryObserver.swift */,
+				501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */,
 				501A785C25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift */,
 				501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */,
 			);

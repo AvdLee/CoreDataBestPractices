@@ -15,7 +15,6 @@ extension NSFetchedResultsController {
         let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Article.name), ascending: true)]
         fetchRequest.fetchBatchSize = 10
-        fetchRequest.fetchLimit = 5
 
         return NSFetchedResultsController<Article>(fetchRequest: fetchRequest, managedObjectContext: PersistentContainer.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }
