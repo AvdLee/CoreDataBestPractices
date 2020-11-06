@@ -16,7 +16,7 @@ extension Article {
         let count = try! context.fetch(fetchRequest).count
 
         // Good:
-        let countRequest = try! PersistentContainer.shared.viewContext.count(for: Article.fetchRequest)
+        let countRequest = try! context.count(for: Article.fetchRequest)
 
         print("Total articles count is \(count) and count request: \(countRequest)")
 

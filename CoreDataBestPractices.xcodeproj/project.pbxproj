@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5016939125556C9700177BB1 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016939025556C9700177BB1 /* Testing.swift */; };
 		501A784F2551876400C1DDF3 /* Deletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A784E2551876400C1DDF3 /* Deletions.swift */; };
 		501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */; };
 		501A785625518CA000C1DDF3 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */; };
@@ -14,7 +15,7 @@
 		501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785C25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift */; };
 		501A786025518CE100C1DDF3 /* PersistentHistoryCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */; };
 		50599D9E2551ABFC005AF34B /* Insertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599D9D2551ABFC005AF34B /* Insertions.swift */; };
-		50599DA82551B503005AF34B /* DeletionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599DA72551B503005AF34B /* DeletionsTests.swift */; };
+		50599DA82551B503005AF34B /* StatsFetchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599DA72551B503005AF34B /* StatsFetchingTests.swift */; };
 		50599EB22552DF07005AF34B /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EB12552DF07005AF34B /* Saving.swift */; };
 		50599EBB2552DFB1005AF34B /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EBA2552DFB1005AF34B /* Constraints.swift */; };
 		50599EC12552E10B005AF34B /* DerivedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599EC02552E10B005AF34B /* DerivedAttributes.swift */; };
@@ -30,6 +31,7 @@
 		50599FB325545D60005AF34B /* CoreData+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FB225545D60005AF34B /* CoreData+Combine.swift */; };
 		50599FB725547B90005AF34B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FB625547B8F005AF34B /* StatsView.swift */; };
 		50599FBB25547FB6005AF34B /* StatsFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FBA25547FB6005AF34B /* StatsFetching.swift */; };
+		50599FC32555625D005AF34B /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FC22555625D005AF34B /* CoreDataTestCase.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
 		506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* CategoriesView.swift */; };
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5016939025556C9700177BB1 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		501A784E2551876400C1DDF3 /* Deletions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deletions.swift; sourceTree = "<group>"; };
 		501A785125518BB000C1DDF3 /* PersistentHistoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryTracking.swift; sourceTree = "<group>"; };
 		501A785525518CA000C1DDF3 /* PersistentHistoryMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryMerger.swift; sourceTree = "<group>"; };
@@ -62,7 +65,7 @@
 		501A785F25518CE100C1DDF3 /* PersistentHistoryCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryCleaner.swift; sourceTree = "<group>"; };
 		50599D9D2551ABFC005AF34B /* Insertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertions.swift; sourceTree = "<group>"; };
 		50599DA52551B503005AF34B /* CoreDataBestPracticesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataBestPracticesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50599DA72551B503005AF34B /* DeletionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionsTests.swift; sourceTree = "<group>"; };
+		50599DA72551B503005AF34B /* StatsFetchingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFetchingTests.swift; sourceTree = "<group>"; };
 		50599DA92551B503005AF34B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50599EB12552DF07005AF34B /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
 		50599EBA2552DFB1005AF34B /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		50599FB225545D60005AF34B /* CoreData+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Combine.swift"; sourceTree = "<group>"; };
 		50599FB625547B8F005AF34B /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		50599FBA25547FB6005AF34B /* StatsFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFetching.swift; sourceTree = "<group>"; };
+		50599FC22555625D005AF34B /* CoreDataTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				50599F94255429B7005AF34B /* Threading.swift */,
 				50599FB225545D60005AF34B /* CoreData+Combine.swift */,
 				50599FBA25547FB6005AF34B /* StatsFetching.swift */,
+				5016939025556C9700177BB1 /* Testing.swift */,
 			);
 			path = "Best Practices";
 			sourceTree = "<group>";
@@ -146,8 +151,9 @@
 		50599DA62551B503005AF34B /* CoreDataBestPracticesTests */ = {
 			isa = PBXGroup;
 			children = (
-				50599DA72551B503005AF34B /* DeletionsTests.swift */,
+				50599DA72551B503005AF34B /* StatsFetchingTests.swift */,
 				50599DA92551B503005AF34B /* Info.plist */,
+				50599FC22555625D005AF34B /* CoreDataTestCase.swift */,
 			);
 			path = CoreDataBestPracticesTests;
 			sourceTree = "<group>";
@@ -384,7 +390,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50599DA82551B503005AF34B /* DeletionsTests.swift in Sources */,
+				50599FC32555625D005AF34B /* CoreDataTestCase.swift in Sources */,
+				50599DA82551B503005AF34B /* StatsFetchingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +424,7 @@
 				50599F95255429B7005AF34B /* Threading.swift in Sources */,
 				506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */,
 				501A786025518CE100C1DDF3 /* PersistentHistoryCleaner.swift in Sources */,
+				5016939125556C9700177BB1 /* Testing.swift in Sources */,
 				501A785D25518CCB00C1DDF3 /* PersistentHistoryFetcher.swift in Sources */,
 				501A785625518CA000C1DDF3 /* PersistentHistoryMerger.swift in Sources */,
 				501A785A25518CBB00C1DDF3 /* PersistentHistoryObserver.swift in Sources */,

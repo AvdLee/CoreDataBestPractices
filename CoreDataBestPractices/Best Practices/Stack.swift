@@ -10,7 +10,7 @@ import CoreData
 
 final class PersistentContainer: NSPersistentContainer {
 
-    static let shared = PersistentContainer(name: "DataModel")
+    static let shared = PersistentContainer(name: "DataModel", managedObjectModel: .sharedModel)
 
     private var persistentHistoryObserver: PersistentHistoryObserver?
 
@@ -37,20 +37,7 @@ final class PersistentContainer: NSPersistentContainer {
 
         viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
 
-        enableQueryGenerations()
-
         persistentHistoryObserver = startObservingPersistentHistoryTransactions()
-    }
-
-    private func enableQueryGenerations() {
-        // Pin the viewContext to the current generation token and set it to keep itself up to date with local changes.
-        viewContext.automaticallyMergesChangesFromParent = true
-
-        do {
-            try viewContext.setQueryGenerationFrom(.current)
-        } catch {
-            fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
-        }
     }
 
     /// A convenience method for creating background contexts that specify the app as their transaction author.

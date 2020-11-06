@@ -43,8 +43,6 @@ final class ArticlesListCollectionViewController: UICollectionViewController {
         title = "Articles"
         setupBarButtonItems()
         try! fetchedResultsController.performFetch()
-
-        PersistentContainer.shared.synchronousWork()
     }
 
     private func setupBarButtonItems() {
@@ -71,6 +69,9 @@ final class ArticlesListCollectionViewController: UICollectionViewController {
         let alert = UIAlertController(title: "Actions", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Derivation Example", style: .default, handler: { _ in
             PersistentContainer.shared.viewContext.demonstrateDerivedAttribute()
+        }))
+        alert.addAction(UIAlertAction(title: "Threading Demo", style: .default, handler: { _ in
+            PersistentContainer.shared.synchronousWork()
         }))
         alert.addAction(UIAlertAction(title: "Insert 1000 1 by 1", style: .default, handler: { _ in
             try! Article.insertSamplesOneByOne(1000)
