@@ -40,44 +40,6 @@ extension Article {
         return goodFirstArticle
     }
 
-    // MARK: - Aggregate Fetching
-    static func categoriesTotalViews(in context: NSManagedObjectContext) -> [[String: AnyObject]] {
-        var expressionDescriptions = [AnyObject]()
-
-        // We want productLine to be one of the columns returned, so just add it as a string
-        let categoryExpressionDescription = NSExpressionDescription()
-        categoryExpressionDescription.name = "Category"
-        categoryExpressionDescription.expression = NSExpression(format: "categoryName")
-        expressionDescriptions.append(categoryExpressionDescription)
-
-        // Create an expression description for our SoldCount column
-        let expressionDescription = NSExpressionDescription()
-        // Name the column
-        expressionDescription.name = "Views"
-        // Use an expression to specify what aggregate action we want to take and
-        // on which column. In this case sum on the sold column
-        expressionDescription.expression = NSExpression(format: "@sum.views")
-        // Specify the return type we expect
-        expressionDescription.expressionResultType = .integer64AttributeType
-        // Append the description to our array
-        expressionDescriptions.append(expressionDescription)
-
-        // Build out our fetch request the usual way
-        let request = Article.fetchRequest()
-        // This is the column we are grouping by. Notice this is the only non aggregate column.
-        request.propertiesToGroupBy = ["categoryName"]
-        // Specify we want dictionaries to be returned
-        request.resultType = .dictionaryResultType
-        // Go ahead and specify a sorter
-        request.sortDescriptors = [NSSortDescriptor(key: "categoryName", ascending: true)]
-        // Hand off our expression descriptions to the propertiesToFetch field. Expressed as strings
-        // these are ["productLine", "SoldCount", "ReturnedCount"] where productLine is the value
-        // we are grouping by.
-        request.propertiesToFetch = expressionDescriptions
-
-        return try! context.fetch(request) as? [[String: AnyObject]] ?? []
-    }
-
     // MARK: - Filtered Fetching
     static func articlesAddedToday(in context: NSManagedObjectContext) -> Int {
         let fetchRequest = Article.fetchRequest()
@@ -93,5 +55,46 @@ extension Article {
         fetchRequest.predicate = NSPredicate(format: "%K >= %@", #keyPath(Article.creationDate), todaysDate as NSDate)
 
         return try! context.count(for: fetchRequest)
+    }
+
+    // MARK: - Aggregate Fetching
+    static func categoriesTotalViews(in context: NSManagedObjectContext) -> [[String: AnyObject]] {
+        var expressionDescriptions = [AnyObject]()
+
+        // We want the category name to be one of the columns returned, so we're just adding it as a key path.
+        let categoryExpressionDescription = NSExpressionDescription()
+        categoryExpressionDescription.name = "Category"
+        categoryExpressionDescription.expression = NSExpression(format: "categoryName")
+        expressionDescriptions.append(categoryExpressionDescription)
+
+        // Create an expression description for the views column
+        let expressionDescription = NSExpressionDescription()
+
+        // This is the name that will be returned as a key in the dictionary result
+        expressionDescription.name = "Views"
+
+        // Use an aggregate function to calculate the value of our column.
+        expressionDescription.expression = NSExpression(format: "@sum.views")
+
+        // Specify the return type we expect. Without setting this to an integer it can result in .0 decimals.
+        expressionDescription.expressionResultType = .integer64AttributeType
+        expressionDescriptions.append(expressionDescription)
+
+        let request = Article.fetchRequest()
+
+        // The column to group the results by. Without this, we would end up with as many results as Articles.
+        // We use the category column which is non-aggregate and consistent for grouping.
+        request.propertiesToGroupBy = ["categoryName"]
+
+        // We need to set the result type to dictionary to be able to use `propertiesToGroupBy`.
+        request.resultType = .dictionaryResultType
+
+        // Sorting on the category name to get an alphabetical result.
+        request.sortDescriptors = [NSSortDescriptor(key: "categoryName", ascending: true)]
+
+        // Filter down the results to the configured expressions so we only get those returned.
+        request.propertiesToFetch = expressionDescriptions
+
+        return try! context.fetch(request) as? [[String: AnyObject]] ?? []
     }
 }
