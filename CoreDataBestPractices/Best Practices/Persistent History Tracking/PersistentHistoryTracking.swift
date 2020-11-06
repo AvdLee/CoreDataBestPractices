@@ -25,7 +25,7 @@ extension PersistentContainer {
         let observer = PersistentHistoryObserver(target: .app, persistentContainer: self, userDefaults: .standard)
 
         viewContext.name = "view_context"
-        viewContext.transactionAuthor = "main_app"
+        viewContext.transactionAuthor = "main_app_view_context"
 
         observer.startObserving()
         return observer

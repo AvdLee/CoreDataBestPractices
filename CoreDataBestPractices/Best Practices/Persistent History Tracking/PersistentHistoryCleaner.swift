@@ -16,19 +16,18 @@ struct PersistentHistoryCleaner {
 
     /// Cleans up the persistent history by deleting the transactions that have been merged into each target.
     func clean() throws {
-        /// Add a timeinterval of 1 so we delete all transactions that are merged before and at the last common transaction timestamp.
-        guard let timestamp = userDefaults.lastCommonTransactionTimestamp(in: targets)?.addingTimeInterval(1) else {
+        guard let timestamp = userDefaults.lastCommonTransactionTimestamp(in: targets) else {
             print("Cancelling deletions as there is no common transaction timestamp")
             return
-        }
-
-        targets.forEach { target in
-            /// Reset the dates as we would otherwise end up in an infinite loop.
-            userDefaults.updateLastHistoryTransactionTimestamp(for: target, to: nil)
         }
 
         let deleteHistoryRequest = NSPersistentHistoryChangeRequest.deleteHistory(before: timestamp)
         print("Deleting persistent history using common timestamp \(timestamp)")
         try context.execute(deleteHistoryRequest)
+
+        targets.forEach { target in
+            /// Reset the dates as we would otherwise end up in an infinite loop.
+            userDefaults.updateLastHistoryTransactionTimestamp(for: target, to: nil)
+        }
     }
 }

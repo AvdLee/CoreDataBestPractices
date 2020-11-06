@@ -1,8 +1,8 @@
 //
-//  PersistentContainer.swift
+//  Stack.swift
 //  Core Data Best Practices
 //
-//  Created by Antoine van der Lee on 02/11/2020.
+//  Created by Antoine van der Lee on 05/11/2020.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ final class PersistentContainer: NSPersistentContainer {
     func setup() {
         registerValueTransformers()
         enablePersistentHistoryTracking()
-        
+
         loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -37,18 +37,32 @@ final class PersistentContainer: NSPersistentContainer {
 
         viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
 
+        enableQueryGenerations()
+
         persistentHistoryObserver = startObservingPersistentHistoryTransactions()
     }
 
-    /**
-     A convenience method for creating background contexts that specify the app as their transaction author.
-     */
-    func backgroundContext() -> NSManagedObjectContext {
-        let context = newBackgroundContext()
-        context.name = "background_context"
-        context.transactionAuthor = "main_app"
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-        return context
+    private func enableQueryGenerations() {
+        // Pin the viewContext to the current generation token and set it to keep itself up to date with local changes.
+        viewContext.automaticallyMergesChangesFromParent = true
+
+        do {
+            try viewContext.setQueryGenerationFrom(.current)
+        } catch {
+            fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+        }
     }
 
+    /// A convenience method for creating background contexts that specify the app as their transaction author.
+    /// It's best practice to perform heavy lifting on a background context.
+    ///
+    /// - Returns: The background context configured with a name and transaction author.
+    override func newBackgroundContext() -> NSManagedObjectContext {
+        let context = super.newBackgroundContext()
+        context.name = "background_context"
+        context.transactionAuthor = "main_app_background_context"
+        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.automaticallyMergesChangesFromParent = true
+        return context
+    }
 }

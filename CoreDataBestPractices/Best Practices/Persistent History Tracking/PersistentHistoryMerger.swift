@@ -17,7 +17,7 @@ struct PersistentHistoryMerger {
 
     func merge() throws {
         let fromDate = userDefaults.lastHistoryTransactionTimestamp(for: currentTarget) ?? .distantPast
-        let fetcher = PersistentHistoryFetcher(context: backgroundContext, fromDate: fromDate)
+        let fetcher = PersistentHistoryFetcher(fetchContext: backgroundContext, mergeContext: viewContext, fromDate: fromDate)
         let history = try fetcher.fetch()
 
         guard !history.isEmpty else {

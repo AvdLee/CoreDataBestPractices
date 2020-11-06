@@ -15,13 +15,14 @@ struct PersistentHistoryFetcher {
         case historyTransactionConvertionFailed
     }
 
-    let context: NSManagedObjectContext
+    let fetchContext: NSManagedObjectContext
+    let mergeContext: NSManagedObjectContext
     let fromDate: Date
 
     func fetch() throws -> [NSPersistentHistoryTransaction] {
         let fetchRequest = createFetchRequest()
 
-        guard let historyResult = try context.execute(fetchRequest) as? NSPersistentHistoryResult, let history = historyResult.result as? [NSPersistentHistoryTransaction] else {
+        guard let historyResult = try fetchContext.execute(fetchRequest) as? NSPersistentHistoryResult, let history = historyResult.result as? [NSPersistentHistoryTransaction] else {
             throw Error.historyTransactionConvertionFailed
         }
 
@@ -35,11 +36,11 @@ struct PersistentHistoryFetcher {
         if let fetchRequest = NSPersistentHistoryTransaction.fetchRequest {
             var predicates: [NSPredicate] = []
 
-            if let transactionAuthor = context.transactionAuthor {
+            if let transactionAuthor = mergeContext.transactionAuthor {
                 /// Only look at transactions created by other targets.
                 predicates.append(NSPredicate(format: "%K != %@", #keyPath(NSPersistentHistoryTransaction.author), transactionAuthor))
             }
-            if let contextName = context.name {
+            if let contextName = mergeContext.name {
                 /// Only look at transactions not from our current context.
                 predicates.append(NSPredicate(format: "%K != %@", #keyPath(NSPersistentHistoryTransaction.contextName), contextName))
             }

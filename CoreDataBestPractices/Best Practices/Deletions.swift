@@ -10,7 +10,7 @@ import CoreData
 
 extension NSManagedObject {
     static func deleteAllOneByOne() throws {
-        let taskContext = PersistentContainer.shared.backgroundContext()
+        let taskContext = PersistentContainer.shared.newBackgroundContext()
         taskContext.perform {
             do {
                 let fetchRequest = self.fetchRequest()
@@ -35,7 +35,7 @@ extension NSManagedObject {
      - In-memory objects are not updated without a merge notification or Persistent History Tracking enabled
      */
     static func deleteAllInBatch() throws {
-        let taskContext = PersistentContainer.shared.backgroundContext()
+        let taskContext = PersistentContainer.shared.newBackgroundContext()
         taskContext.perform {
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: self.fetchRequest())
             batchDeleteRequest.resultType = .resultTypeCount

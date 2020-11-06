@@ -18,7 +18,7 @@ extension PersistentContainer {
     /// Wrong: don't pass the objects.
     /// With `-com.apple.CoreData.ConcurrencyDebug 1` launch argument enabled this is catched early on.
     func deleteObjects(_ objects: [NSManagedObject]) {
-        let taskContext = backgroundContext()
+        let taskContext = newBackgroundContext()
         taskContext.perform {
             objects.forEach { object in
                 /// This will crash:
@@ -33,7 +33,7 @@ extension PersistentContainer {
 
     /// Good: pass in object IDs.
     func deleteObjectsWithIDs(_ objectIDs: [NSManagedObjectID]) {
-        let taskContext = backgroundContext()
+        let taskContext = newBackgroundContext()
         taskContext.perform {
             objectIDs.compactMap { objectID -> NSManagedObject? in
                 try? taskContext.existingObject(with: objectID)
@@ -43,6 +43,28 @@ extension PersistentContainer {
 
             try! taskContext.save()
             taskContext.reset()
+        }
+    }
+
+    func synchronousWork() {
+        let mainThread = viewContext
+        mainThread.perform {
+            // Blocks the UI
+            print("View context perform on \(Thread.current)")
+        }
+        mainThread.performAndWait {
+            // Blocks the UI.
+            print("View context perform and wait on \(Thread.current)")
+        }
+        let backgroundThread = newBackgroundContext()
+        backgroundThread.perform {
+            // Does not block the UI.
+            print("Background context perform on \(Thread.current)")
+        }
+        backgroundThread.performAndWait {
+            // Does block the thread it's being called on.
+            // In this case, the main thread.
+            print("Background context perform and wait on \(Thread.current)")
         }
     }
 }

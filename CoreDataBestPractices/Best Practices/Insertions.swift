@@ -10,7 +10,7 @@ import CoreData
 
 extension Article {
     static func insertSamplesOneByOne(_ numberOfSamples: Int) throws {
-        let taskContext = PersistentContainer.shared.backgroundContext()
+        let taskContext = PersistentContainer.shared.newBackgroundContext()
         taskContext.perform {
             do {
                 let category = Category.insertSample(into: taskContext)
@@ -20,6 +20,7 @@ extension Article {
                     article.name = String(format: "Generated %05d", index)
                     article.category = category
                     article.source = .generated
+                    article.views = Int.random(in: 0..<1000)
                 }
 
                 try taskContext.save()
@@ -40,7 +41,7 @@ extension Article {
         - Dictionary initialisation or JSON dictionary in which keys should exactly match entity models
     */
     static func insertSamplesInBatch(_ numberOfSamples: Int) throws {
-        let taskContext = PersistentContainer.shared.backgroundContext()
+        let taskContext = PersistentContainer.shared.newBackgroundContext()
         taskContext.perform {
             do {
                 let creationDate = Date()
@@ -56,6 +57,7 @@ extension Article {
                     article.creationDate = creationDate
                     article.lastModifiedDate = creationDate
                     article.source = .generated
+                    article.views = Int.random(in: 0..<1000)
                     index += 1
                     return false
                 })

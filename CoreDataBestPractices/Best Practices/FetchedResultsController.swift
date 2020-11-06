@@ -12,9 +12,7 @@ extension NSFetchedResultsController {
 
     @objc static func articlesFetchedResultsController() -> NSFetchedResultsController<Article> {
         /// Presentation: rewrite this using 'Managed'.
-        let fetchRequest = NSFetchRequest<Article>(entityName: "Article")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Article.name), ascending: true)]
-        fetchRequest.fetchBatchSize = 10
+        let fetchRequest = Article.listAllFetchRequest()
 
         return NSFetchedResultsController<Article>(fetchRequest: fetchRequest, managedObjectContext: PersistentContainer.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }

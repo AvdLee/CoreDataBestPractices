@@ -13,7 +13,7 @@ public enum AppTarget: String, CaseIterable {
     case app
 
     /// An optional extension that could also make use of the same database.
-    /// case shareExtension
+    case shareExtension
 }
 
 public final class PersistentHistoryObserver {

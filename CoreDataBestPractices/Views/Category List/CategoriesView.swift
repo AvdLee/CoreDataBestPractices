@@ -30,12 +30,27 @@ struct CategoriesView: View {
             }
             .navigationBarTitle("Categories")
             .navigationBarItems(leading:
-                Button("Add") {
-                    Category.insertSample(into: managedObjectContext)
-            }, trailing:
-                Button("Save") {
-                    try! self.managedObjectContext.save()
-            })
+                HStack {
+                    Button("Add") {
+                        Category.insertSample(into: managedObjectContext)
+                    }
+                    Button("Rename") {
+                        self.renameCategory()
+                    }
+                }, trailing:
+                    Button("Save") {
+                        try! self.managedObjectContext.save()
+                    }
+                )
+        }
+    }
+
+    private func renameCategory() {
+        guard let category = categories.first else { return }
+        if category.name == "SwiftUI" {
+            category.name = "Core Data"
+        } else {
+            category.name = "SwiftUI"
         }
     }
 }

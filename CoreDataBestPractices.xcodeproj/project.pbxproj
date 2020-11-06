@@ -24,7 +24,12 @@
 		50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F8A25530498005AF34B /* FetchedResultsController.swift */; };
 		50599F95255429B7005AF34B /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F94255429B7005AF34B /* Threading.swift */; };
 		50599F9925542C79005AF34B /* LifeCycleEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599F9825542C79005AF34B /* LifeCycleEvents.swift */; };
-		506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5D0B255086BE00A82629 /* PersistentContainer.swift */; };
+		50599FA12554497A005AF34B /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FA02554497A005AF34B /* Stack.swift */; };
+		50599FA725544E69005AF34B /* FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FA625544E69005AF34B /* FetchRequests.swift */; };
+		50599FAD25545A0F005AF34B /* ArticleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FAC25545A0F005AF34B /* ArticleListCell.swift */; };
+		50599FB325545D60005AF34B /* CoreData+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FB225545D60005AF34B /* CoreData+Combine.swift */; };
+		50599FB725547B90005AF34B /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FB625547B8F005AF34B /* StatsView.swift */; };
+		50599FBB25547FB6005AF34B /* StatsFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50599FBA25547FB6005AF34B /* StatsFetching.swift */; };
 		506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA19253EB0C7006835F7 /* AppDelegate.swift */; };
 		506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */; };
 		506FFA1E253EB0C7006835F7 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA1D253EB0C7006835F7 /* CategoriesView.swift */; };
@@ -35,7 +40,7 @@
 		506FFA33253EB0F4006835F7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FFA32253EB0F4006835F7 /* Article.swift */; };
 		50C2D5B025474ABC00BAA59C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2D5AF25474ABC00BAA59C /* Category.swift */; };
 		50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7CFB2255093A300E75FDA /* ArticleFormView.swift */; };
-		50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */; };
+		50F27FE7255083CA0057381C /* ArticlesListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F27FE6255083CA0057381C /* ArticlesListCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +73,12 @@
 		50599F8A25530498005AF34B /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 		50599F94255429B7005AF34B /* Threading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		50599F9825542C79005AF34B /* LifeCycleEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleEvents.swift; sourceTree = "<group>"; };
-		506B5D0B255086BE00A82629 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		50599FA02554497A005AF34B /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		50599FA625544E69005AF34B /* FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRequests.swift; sourceTree = "<group>"; };
+		50599FAC25545A0F005AF34B /* ArticleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListCell.swift; sourceTree = "<group>"; };
+		50599FB225545D60005AF34B /* CoreData+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Combine.swift"; sourceTree = "<group>"; };
+		50599FB625547B8F005AF34B /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		50599FBA25547FB6005AF34B /* StatsFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFetching.swift; sourceTree = "<group>"; };
 		506FFA16253EB0C7006835F7 /* Core Data Best Practices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Best Practices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		506FFA19253EB0C7006835F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506FFA1B253EB0C7006835F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +91,7 @@
 		506FFA32253EB0F4006835F7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		50C2D5AF25474ABC00BAA59C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		50D7CFB2255093A300E75FDA /* ArticleFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFormView.swift; sourceTree = "<group>"; };
-		50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListTableViewController.swift; sourceTree = "<group>"; };
+		50F27FE6255083CA0057381C /* ArticlesListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +115,9 @@
 		501A784D2551875500C1DDF3 /* Best Practices */ = {
 			isa = PBXGroup;
 			children = (
+				50599FA02554497A005AF34B /* Stack.swift */,
 				50599F8A25530498005AF34B /* FetchedResultsController.swift */,
+				50599FA625544E69005AF34B /* FetchRequests.swift */,
 				50599F86255303D5005AF34B /* DiffableDataSources.swift */,
 				50599EB12552DF07005AF34B /* Saving.swift */,
 				50599EB92552DF98005AF34B /* Model Configurations */,
@@ -113,6 +125,8 @@
 				50599D9D2551ABFC005AF34B /* Insertions.swift */,
 				501A785425518C8700C1DDF3 /* Persistent History Tracking */,
 				50599F94255429B7005AF34B /* Threading.swift */,
+				50599FB225545D60005AF34B /* CoreData+Combine.swift */,
+				50599FBA25547FB6005AF34B /* StatsFetching.swift */,
 			);
 			path = "Best Practices";
 			sourceTree = "<group>";
@@ -155,7 +169,6 @@
 			children = (
 				506FFA31253EB0EC006835F7 /* Models */,
 				506FFA1F253EB0C7006835F7 /* DataModel.xcdatamodeld */,
-				506B5D0B255086BE00A82629 /* PersistentContainer.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -163,7 +176,8 @@
 		506B5D2F255088A500A82629 /* Articles List */ = {
 			isa = PBXGroup;
 			children = (
-				50F27FE6255083CA0057381C /* ArticlesListTableViewController.swift */,
+				50F27FE6255083CA0057381C /* ArticlesListCollectionViewController.swift */,
+				50599FAC25545A0F005AF34B /* ArticleListCell.swift */,
 			);
 			path = "Articles List";
 			sourceTree = "<group>";
@@ -239,6 +253,7 @@
 				506B5D2F255088A500A82629 /* Articles List */,
 				50D7CFB12550938A00E75FDA /* Create Article */,
 				50D7CFB02550937A00E75FDA /* Category List */,
+				50599FB625547B8F005AF34B /* StatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,19 +393,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				50599F83255302A2005AF34B /* Validating.swift in Sources */,
-				506B5D0C255086BE00A82629 /* PersistentContainer.swift in Sources */,
 				506FFA1A253EB0C7006835F7 /* AppDelegate.swift in Sources */,
 				506FFA21253EB0C7006835F7 /* DataModel.xcdatamodeld in Sources */,
+				50599FB725547B90005AF34B /* StatsView.swift in Sources */,
 				50599F7F2552FF37005AF34B /* Transformables.swift in Sources */,
+				50599FAD25545A0F005AF34B /* ArticleListCell.swift in Sources */,
 				50599EBB2552DFB1005AF34B /* Constraints.swift in Sources */,
 				501A785225518BB000C1DDF3 /* PersistentHistoryTracking.swift in Sources */,
 				50599EB22552DF07005AF34B /* Saving.swift in Sources */,
 				50D7CFB3255093A300E75FDA /* ArticleFormView.swift in Sources */,
 				50599F8B25530498005AF34B /* FetchedResultsController.swift in Sources */,
-				50F27FE7255083CA0057381C /* ArticlesListTableViewController.swift in Sources */,
+				50F27FE7255083CA0057381C /* ArticlesListCollectionViewController.swift in Sources */,
+				50599FA725544E69005AF34B /* FetchRequests.swift in Sources */,
 				50599F9925542C79005AF34B /* LifeCycleEvents.swift in Sources */,
 				50C2D5B025474ABC00BAA59C /* Category.swift in Sources */,
 				506FFA1C253EB0C7006835F7 /* SceneDelegate.swift in Sources */,
+				50599FA12554497A005AF34B /* Stack.swift in Sources */,
+				50599FBB25547FB6005AF34B /* StatsFetching.swift in Sources */,
+				50599FB325545D60005AF34B /* CoreData+Combine.swift in Sources */,
 				501A784F2551876400C1DDF3 /* Deletions.swift in Sources */,
 				50599EC12552E10B005AF34B /* DerivedAttributes.swift in Sources */,
 				506FFA33253EB0F4006835F7 /* Article.swift in Sources */,

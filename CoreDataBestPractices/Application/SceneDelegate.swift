@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let navigationController = UINavigationController(rootViewController: ArticlesListTableViewController())
+            let navigationController = UINavigationController(rootViewController: ArticlesListCollectionViewController())
             window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
@@ -62,7 +62,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             assertionFailure("Saving failed with error: \(error)")
         }
     }
-
-
 }
 

@@ -13,7 +13,7 @@ import UIKit
 /// Simply use the single delegate method available and apply the new snapshot.
 ///
 /// Read more: https://www.avanderlee.com/swift/diffable-data-sources-core-data/
-extension ArticlesListTableViewController: NSFetchedResultsControllerDelegate {
+extension ArticlesListCollectionViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         dataSource.apply(snapshot as NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>, animatingDifferences: true)
     }

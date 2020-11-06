@@ -28,6 +28,7 @@ extension NSManagedObjectContext {
         article.name = "A Title With Case and Díäcrîtįcs"
         article.category = category
         article.source = .generated
+        article.views = Int.random(in: 0..<1000)
 
         try! PersistentContainer.shared.viewContext.saveIfNeeded()
 

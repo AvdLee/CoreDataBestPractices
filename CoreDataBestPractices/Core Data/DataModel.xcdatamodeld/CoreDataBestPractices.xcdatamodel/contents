@@ -9,6 +9,7 @@
         <attribute name="name" attributeType="String" minValueString="3" maxValueString="32"/>
         <attribute name="searchName" optional="YES" attributeType="String" derived="YES" derivationExpression="canonical:(name)"/>
         <attribute name="source" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="views" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="articles" inverseEntity="Category"/>
     </entity>
     <entity name="Category" representedClassName=".Category" syncable="YES">
@@ -23,7 +24,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Article" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="Article" positionX="-54" positionY="-9" width="128" height="193"/>
         <element name="Category" positionX="-45" positionY="36" width="128" height="103"/>
     </elements>
 </model>

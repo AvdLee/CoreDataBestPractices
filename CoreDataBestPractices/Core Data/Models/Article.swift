@@ -17,6 +17,7 @@ final class Article: NSManagedObject, Identifiable {
     }
 
     @NSManaged var name: String
+    @NSManaged var views: Int
     @NSManaged var creationDate: Date!
     @NSManaged var lastModifiedDate: Date
     @NSManaged var localResource: URL?

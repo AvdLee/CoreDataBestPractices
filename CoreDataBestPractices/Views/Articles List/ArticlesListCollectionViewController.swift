@@ -1,5 +1,5 @@
 //
-//  ArticlesListTableViewController.swift
+//  ArticlesListCollectionViewController.swift
 //  CoreDataBestPractices
 //
 //  Created by Antoine van der Lee on 02/11/2020.
@@ -9,28 +9,15 @@ import UIKit
 import SwiftUI
 import CoreData
 
-final class ArticlesListTableViewController: UICollectionViewController {
+final class ArticlesListCollectionViewController: UICollectionViewController {
     enum Section: CaseIterable {
         case main
     }
 
     private(set) lazy var dataSource: UICollectionViewDiffableDataSource<Section, NSManagedObjectID> = {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, NSManagedObjectID> { cell, indexPath, articleObjectID in
+        let cellRegistration = UICollectionView.CellRegistration<ArticleListCell, NSManagedObjectID> { cell, indexPath, articleObjectID in
             guard let article = try? PersistentContainer.shared.viewContext.existingObject(with: articleObjectID) as? Article else { return }
-
-            var content = cell.defaultContentConfiguration()
-            content.text = article.name
-
-            content.secondaryText = article.categoryName ?? "Uncategorized"
-            content.secondaryTextProperties.color = .secondaryLabel
-            content.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .subheadline)
-
-            content.image = UIImage(systemName: "doc.plaintext")
-            content.imageProperties.preferredSymbolConfiguration = .init(font: content.textProperties.font, scale: .large)
-
-            cell.contentConfiguration = content
-            cell.accessories = [.disclosureIndicator()]
-            cell.tintColor = UIColor(named: "SwiftLee Orange")
+            cell.article = article
         }
 
         return UICollectionViewDiffableDataSource<Section, NSManagedObjectID>(collectionView: collectionView) { (collectionView, indexPath, articleObjectID) -> UICollectionViewCell? in
@@ -56,6 +43,8 @@ final class ArticlesListTableViewController: UICollectionViewController {
         title = "Articles"
         setupBarButtonItems()
         try! fetchedResultsController.performFetch()
+
+        PersistentContainer.shared.synchronousWork()
     }
 
     private func setupBarButtonItems() {
@@ -66,6 +55,10 @@ final class ArticlesListTableViewController: UICollectionViewController {
             self.showMoreOptions()
         }))
         setToolbarItems([
+            UIBarButtonItem(title: "Stats", primaryAction: UIAction(handler: { [unowned self] _ in
+                self.presentStatsView()
+            })),
+            UIBarButtonItem(systemItem: .flexibleSpace),
             UIBarButtonItem(title: "Add new article", primaryAction: UIAction(handler: { [unowned self] _ in
                 self.presentAddArticleView()
             }))
@@ -109,6 +102,12 @@ final class ArticlesListTableViewController: UICollectionViewController {
     private func presentAddArticleView() {
         let articleView = ArticleFormView(dismiss: { self.dismiss(animated: true) }).environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
         let hostingController = UIHostingController(rootView: articleView)
+        present(hostingController, animated: true, completion: nil)
+    }
+
+    private func presentStatsView() {
+        let statsView = StatsView()
+        let hostingController = UIHostingController(rootView: statsView)
         present(hostingController, animated: true, completion: nil)
     }
 }

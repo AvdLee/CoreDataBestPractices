@@ -8,6 +8,15 @@
 import Foundation
 import CoreData
 
+/**
+ In general: Save only if needed.
+ The `saveIfNeeded` method below will help to achieve this automatically.
+ Apart from that, you can still focus on calling this method only if needed.
+ However, do consider: your data is only saved if you save :-)
+
+ Another good practice is to save on termination & on background.
+ See: `SceneDelegate.sceneDidEnterBackground(_:)`
+ */
 extension NSManagedObjectContext {
 
     /// Checks whether there are actually changes that will change the persistent store.
