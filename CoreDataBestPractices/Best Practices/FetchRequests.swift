@@ -22,7 +22,8 @@ extension Article {
         // 'SELECT 1, t0.Z_PK, t0.ZNAME, t0.ZCATEGORYNAME FROM ZARTICLE t0 WHERE  t0.Z_PK IN (SELECT * FROM _Z_intarray0)   LIMIT 20'
         fetchRequest.propertiesToFetch = [
             #keyPath(Article.name),
-            #keyPath(Article.categoryName)
+            #keyPath(Article.categoryName),
+            #keyPath(Article.views)
         ]
         
         return fetchRequest
