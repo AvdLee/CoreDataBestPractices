@@ -53,7 +53,7 @@ final class UIColorValueTransformer: ValueTransformer {
 }
 
 extension UIColorValueTransformer {
-    /// The name of the transformer. This is the name used to register the transformer using `ValueTransformer.setValueTrandformer(_"forName:)`.
+    /// The name of the transformer. This is the name used to register the transformer using `ValueTransformer.setValueTransformer(_"forName:)`.
     static let name = NSValueTransformerName(rawValue: String(describing: UIColorValueTransformer.self))
 
     /// Registers the value transformer with `ValueTransformer`.

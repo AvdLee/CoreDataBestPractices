@@ -33,7 +33,7 @@ I would love for this project to grow as a source of best practices regarding Co
 
 ## License
 
-**Core Data Best Pratices** is available under the MIT license, and uses source code from open source projects. See the [LICENSE](https://github.com/AvdLee/CoreDataBestPractices/blob/main/LICENSE) file for more info.
+**Core Data Best Practices** is available under the MIT license, and uses source code from open source projects. See the [LICENSE](https://github.com/AvdLee/CoreDataBestPractices/blob/main/LICENSE) file for more info.
 
 ## Author
 
