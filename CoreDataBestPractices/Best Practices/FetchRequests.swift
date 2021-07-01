@@ -31,7 +31,7 @@ extension Article {
 }
 
 /// Defines a convenience class for `NSManagedObject` types to add common methods and remove boilerplate code.
-public protocol Managed: class, NSFetchRequestResult {
+public protocol Managed: AnyObject, NSFetchRequestResult {
     static var entityName: String { get }
 }
 
