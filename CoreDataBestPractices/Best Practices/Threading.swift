@@ -16,7 +16,7 @@ import CoreData
 extension PersistentContainer {
 
     /// Wrong: don't pass the objects.
-    /// With `-com.apple.CoreData.ConcurrencyDebug 1` launch argument enabled this is catched early on.
+    /// With `-com.apple.CoreData.ConcurrencyDebug 1` launch argument enabled this is caught early on.
     func deleteObjects(_ objects: [NSManagedObject]) {
         let taskContext = newBackgroundContext()
         taskContext.perform {
